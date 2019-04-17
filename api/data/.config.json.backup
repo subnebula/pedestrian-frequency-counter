@@ -581,6 +581,24 @@
      "file": "/usr/src/node-red/node_modules/node-red-node-twitter/27-twitter.js"
     }
    }
+  },
+  "node-red-contrib-mongodb3": {
+   "name": "node-red-contrib-mongodb3",
+   "version": "2.0.0",
+   "local": false,
+   "nodes": {
+    "mongodb": {
+     "name": "mongodb",
+     "types": [
+      "mongodb3",
+      "mongodb3 in"
+     ],
+     "enabled": true,
+     "local": false,
+     "module": "node-red-contrib-mongodb3",
+     "file": "/usr/src/node-red/node_modules/node-red-contrib-mongodb3/mongodb/mongodb.js"
+    }
+   }
   }
  },
  "_credentialSecret": "9bcc78e00390481767ebb73ddec1265198845f27300d3dbf1398b891fc19126c",
