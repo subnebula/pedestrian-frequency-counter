@@ -2,5 +2,5 @@
 
 Run this command to start:
 ```
-    docker-compose up
+docker-compose up
 ```

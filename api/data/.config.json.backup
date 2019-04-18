@@ -599,6 +599,24 @@
      "file": "/usr/src/node-red/node_modules/node-red-contrib-mongodb3/mongodb/mongodb.js"
     }
    }
+  },
+  "node-red-node-mysql": {
+   "name": "node-red-node-mysql",
+   "version": "0.0.18",
+   "local": false,
+   "nodes": {
+    "mysql": {
+     "name": "mysql",
+     "types": [
+      "MySQLdatabase",
+      "mysql"
+     ],
+     "enabled": true,
+     "local": false,
+     "module": "node-red-node-mysql",
+     "file": "/usr/src/node-red/node_modules/node-red-node-mysql/68-mysql.js"
+    }
+   }
   }
  },
  "_credentialSecret": "9bcc78e00390481767ebb73ddec1265198845f27300d3dbf1398b891fc19126c",
@@ -609,7 +627,9 @@
      "view-grid-size": 20,
      "view-node-status": true,
      "view-node-show-label": true,
-     "view-show-tips": true
+     "view-show-tips": true,
+     "view-snap-grid": true,
+     "view-show-grid": true
     }
    }
   }

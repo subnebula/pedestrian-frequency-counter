@@ -1,5 +1,5 @@
 
-version: "2"
+version: "3"
 services:
   api:
     build: api
@@ -9,9 +9,23 @@ services:
       - "./api/data:/data"
     links:
       - db
+      - db2
   db:
     image: mongo
     restart: always
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodata:/data/db
+    command: mongod
+  db2:
+    image: tutum/mysql:5.6
     environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: example
+      - ON_CREATE_DB=ttn_test_db
+    env_file:
+      - ./env/mysql.env
+    volumes:
+      - "ttn-test-db-data:/var/lib/mysql"
+volumes:
+  mongodata:
+  ttn-test-db-data:
