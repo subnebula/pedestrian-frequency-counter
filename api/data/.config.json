@@ -619,7 +619,6 @@
    }
   }
  },
- "_credentialSecret": "9bcc78e00390481767ebb73ddec1265198845f27300d3dbf1398b891fc19126c",
  "users": {
   "_": {
    "editor": {
@@ -643,7 +642,8 @@
      "view-snap-grid": true,
      "view-show-grid": true
     }
-   }
+   },
+   "menu-menu-item-sidebar": true
   }
  }
 }

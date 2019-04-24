@@ -619,7 +619,6 @@
    }
   }
  },
- "_credentialSecret": "9bcc78e00390481767ebb73ddec1265198845f27300d3dbf1398b891fc19126c",
  "users": {
   "_": {
    "editor": {
@@ -632,6 +631,19 @@
      "view-show-grid": true
     }
    }
+  },
+  "admin": {
+   "editor": {
+    "view": {
+     "view-grid-size": "20",
+     "view-node-status": true,
+     "view-node-show-label": true,
+     "view-show-tips": true,
+     "view-snap-grid": true,
+     "view-show-grid": true
+    }
+   },
+   "menu-menu-item-sidebar": false
   }
  }
 }
