@@ -20,6 +20,6 @@ CREATE TABLE IF NOT EXISTS sensor_data ( pedl int,  pedr int, cycll int, cyclr i
 ```
 Page                Method      Payload         Response
 \sensor-data        GET         N/A             Array containing all data
-\sensor-data        POST        JSON object     201 (created)
+\sensor-data        POST        JSON object     201 (created) //this input needs to be sanitised
 \node-sensor-data   GET         ?id='nodeID'    Array containing all of node's data
 ```
