@@ -3,8 +3,6 @@ import React from 'react';
 import combinedReducers from './reducers';
 import createStore from './helpers/createStore';
 import Home from './components/Home';
-//const Home = React.createFactory(require('./components/Home').default);
-
 
 const initialState = combinedReducers();
 const initialStateString =

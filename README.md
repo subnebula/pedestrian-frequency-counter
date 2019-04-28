@@ -1,5 +1,11 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+**Make sure node.js is installed on your machine**
+Made with Node.js 10.15.3
+
+Before firt run, install dependancies with:
+# `npm install react react-redux redux-thunk`
+
 ## Available Scripts
 
 In the project directory, you can run:
