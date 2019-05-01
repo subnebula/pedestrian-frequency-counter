@@ -16,5 +16,6 @@ Then in the mysql prompt paste the following:
 Page                Method      Payload         Response
 \sensor-data        GET         N/A             Array containing all data
 \sensor-data        POST        JSON object     201 (created) //this input needs to be sanitised
-\node-sensor-data   GET         ?id='nodeID'    Array containing all of node's data
+\node-sensor-data   GET         \nodeID    		Takes the deviceID of a node and returns an array containing all of node's data.
+\nodes				GET			N\A				Array containing all nodes
 ```
