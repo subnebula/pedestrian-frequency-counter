@@ -1,4 +1,4 @@
-const initalState = {
+const initialState = {
     data: [
         {"pedl":32,"pedr":32,"cycll":32,"cyclr":32,"temp":6.4,"devid":"9000000000010000","time":"2019-04-24T04:00:21.000Z"},
         {"pedl":80,"pedr":80,"cycll":80,"cyclr":80,"temp":16,"devid":"9000000000010000","time":"2019-04-24T04:01:42.000Z"},
@@ -11,10 +11,9 @@ const initalState = {
     ]
 }
 
-function reducer(state) {
+function reducer(state = initialState) {
     
-    state = state || initalState;
     return state;
 }
 
-export default reducer;
+export { reducer, initialState };

@@ -6,33 +6,31 @@ import Node from './Node';
 class NodeList extends React.Component {
     
     render() {
-        const createNodeListItem = (node) => {
+        const createNodeListItem = (node, i) => {
             return (
                 <Node
-                    id = {node.time}
+                    id = {i}
                     node = {node}
                 />
             );
         };
 
         return (
-            <div>
+            <div className="bg-white absolute bottom right mr12 mb24 py12 px12 shadow-darken10 round z1 wmax380 hmax50">
                 <h2>Nodes</h2>
                 <div>
                     <table>
                         <thead>
                             <tr>
-                                <th>Pedestrian Right</th>
-                                <th>Pedestrian Left</th> 
-                                <th>Cyclist Right</th>
-                                <th>Cyclist Left</th>
+                                <th>ID</th>
+                                <th>Pedestrians</th>
+                                <th>Cyclists</th>
                                 <th>Temperature</th>
-                                <th>Device ID</th>
                                 <th>Time</th>
                             </tr>
                         </thead>
-                        <tbody className='nodeList'>
-                            {this.props.nodes.data.map(createNodeListItem)}
+                        <tbody>
+                            {this.props.nodes.map(createNodeListItem)}
                         </tbody>
                     </table>
                 </div>
@@ -43,7 +41,7 @@ class NodeList extends React.Component {
 
 const NodeListContainer = connect(
     state => ({
-        nodes: state.nodes,
+        nodes: state.data,
     }),
 )(NodeList);
 
