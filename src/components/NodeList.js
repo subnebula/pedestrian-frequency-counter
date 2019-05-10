@@ -30,7 +30,7 @@ class NodeList extends React.Component {
                             </tr>
                         </thead>
                         <tbody>
-                            {this.props.nodes.map(createNodeListItem)}
+                            
                         </tbody>
                     </table>
                 </div>
