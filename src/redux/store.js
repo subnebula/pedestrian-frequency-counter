@@ -1,5 +1,5 @@
 import { createStore } from 'redux';
-import { reducer } from './nodes';
+import { reducer } from './markers';
 
 const store = createStore(reducer)
 

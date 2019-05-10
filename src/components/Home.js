@@ -18,7 +18,7 @@ class Home extends React.Component {
             <Provider store={store}>
                 <div className='map'>
                     <Map/>
-                    <NodeList/>
+                    
                 </div>
             </Provider>
         );
