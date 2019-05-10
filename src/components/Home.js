@@ -1,5 +1,5 @@
 import React from 'react';
-import NodeList from './NodeList';
+//import NodeList from './NodeList';
 import Map from './Map';
 import { Provider } from 'react-redux';
 import { store } from '../redux/store'
