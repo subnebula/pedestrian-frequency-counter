@@ -11,14 +11,13 @@ class Home extends React.Component {
     render() {
 
         // Returns JSX (HTML)
-        // <Provider store={store}> gives the components inside it access to the react store
+        // <Provider store={store}> gives the components inside it access to the redux store
         // <Map/> is the Map.js component
         // <NodeList/> is the NodeList.js component
         return (
             <Provider store={store}>
                 <div className='map'>
                     <Map/>
-                    
                 </div>
             </Provider>
         );

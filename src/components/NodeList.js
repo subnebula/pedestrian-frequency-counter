@@ -41,7 +41,7 @@ class NodeList extends React.Component {
 
 const NodeListContainer = connect(
     state => ({
-        nodes: state.data,
+        nodes: state.nodes.data,
     }),
 )(NodeList);
 

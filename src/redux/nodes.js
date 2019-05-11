@@ -11,9 +11,9 @@ const initialState = {
     ]
 }
 
-function reducer(state = initialState) {
+function nodes(state = initialState) {
     
     return state;
 }
 
-export { reducer, initialState };
+export { nodes, initialState };

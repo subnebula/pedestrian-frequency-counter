@@ -134,7 +134,7 @@ class Map extends React.Component {
 
 const MapContainer = connect(
   state => ({
-      markers: state.data,
+      markers: state.markers.data,
   }),
 )(Map);
 

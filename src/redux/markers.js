@@ -43,9 +43,9 @@ const initialState = {
   ]
 }
 
-function reducer(state = initialState) {
+function markers(state = initialState) {
     
   return state;
 }
 
-export { reducer, initialState };
+export { markers, initialState };
