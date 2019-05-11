@@ -1,5 +1,5 @@
 import React from 'react';
-//import NodeList from './NodeList';
+import NodeList from './NodeList';
 import Map from './Map';
 import { Provider } from 'react-redux';
 import { store } from '../redux/store'
@@ -16,9 +16,8 @@ class Home extends React.Component {
         // <NodeList/> is the NodeList.js component
         return (
             <Provider store={store}>
-                <div className='map'>
-                    <Map/>
-                </div>
+                <Map/>
+                <NodeList/>
             </Provider>
         );
     }

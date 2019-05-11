@@ -2,6 +2,9 @@ import React from 'react';
 import mapboxgl from 'mapbox-gl'
 import { connect } from 'react-redux';
 
+import createAcionDispatchers from '../redux/createActionDispatchers'
+import nodesActionCreators from '../redux/reducers/nodes'
+
 // Public key for mapbox API
 mapboxgl.accessToken = 'pk.eyJ1IjoiMTg1MTk5NjEiLCJhIjoiY2p2OWd4bThtMHNwNDN5cDU0OWZ6aTczeiJ9.I0UeX3pGMBHSet68Nx9R4w';
 
@@ -103,6 +106,10 @@ class Map extends React.Component {
       popup.remove();
     });
 
+    this.map.on('click', 'nodes', () =>{
+      this.props.showNodes();
+    })
+
   }
 
   // If/when the component unmounts
@@ -136,6 +143,7 @@ const MapContainer = connect(
   state => ({
       markers: state.markers.data,
   }),
+  createAcionDispatchers(nodesActionCreators)
 )(Map);
 
 
