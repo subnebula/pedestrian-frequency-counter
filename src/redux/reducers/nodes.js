@@ -3,6 +3,7 @@ const HIDE_NODES = 'HIDE_NODES';
 
 const initialState = {
     visible: false,
+    location: null,
     data: [
         {"pedl":32,"pedr":32,"cycll":32,"cyclr":32,"temp":6.4,"devid":"9000000000010000","time":"2019-04-24T04:00:21.000Z"},
         {"pedl":80,"pedr":80,"cycll":80,"cyclr":80,"temp":16,"devid":"9000000000010000","time":"2019-04-24T04:01:42.000Z"},
@@ -20,7 +21,8 @@ function reducer(state = initialState, action) {
     switch(action.type) {
         case SHOW_NODES: 
             return Object.assign({}, state, {
-                visible: !state.visible
+                visible: true,
+                location: action.location
             })
         
         case HIDE_NODES:
@@ -34,11 +36,11 @@ function reducer(state = initialState, action) {
     
 }
 
-reducer.showNodes = () => {
-    return { type: SHOW_NODES}
+export function showNodes(location) {
+    return { type: SHOW_NODES, location: location}
 }
 
-reducer.hideNodes = () => {
+export function hideNodes() {
     return { type: HIDE_NODES}
 }
 

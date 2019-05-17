@@ -2,8 +2,7 @@ import React from 'react';
 import mapboxgl from 'mapbox-gl'
 import { connect } from 'react-redux';
 
-import createAcionDispatchers from '../redux/createActionDispatchers'
-import nodesActionCreators from '../redux/reducers/nodes'
+import {showNodes} from '../redux/reducers/nodes'
 
 // Public key for mapbox API
 mapboxgl.accessToken = 'pk.eyJ1IjoiMTg1MTk5NjEiLCJhIjoiY2p2OWd4bThtMHNwNDN5cDU0OWZ6aTczeiJ9.I0UeX3pGMBHSet68Nx9R4w';
@@ -35,7 +34,7 @@ class Map extends React.Component {
     //create a new map object, centers it and sets default zoom
     this.map = new mapboxgl.Map({
       container: this.mapContainer,
-      style: 'mapbox://styles/mapbox/streets-v9',
+      style: 'mapbox://styles/mapbox/streets-v10',
       center: [144.282600, -36.758900],
       zoom: 14
     });    
@@ -106,8 +105,11 @@ class Map extends React.Component {
       popup.remove();
     });
 
-    this.map.on('click', 'nodes', () =>{
-      this.props.showNodes();
+    this.map.on('click', 'nodes', (point) =>{
+      
+      this.props.dispatch(showNodes(point.features[0].properties.description));
+      
+      //this.props.showNodes();
     })
 
   }
@@ -141,9 +143,8 @@ class Map extends React.Component {
 
 const MapContainer = connect(
   state => ({
-      markers: state.markers.data,
-  }),
-  createAcionDispatchers(nodesActionCreators)
+    markers: state.markers.data
+  })
 )(Map);
 
 
