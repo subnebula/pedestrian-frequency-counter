@@ -1,5 +1,5 @@
 import { createStore } from 'redux';
-import { reducer } from './DataStore';
+import { reducer } from './TableData';
 
 const store = createStore(reducer)
 
