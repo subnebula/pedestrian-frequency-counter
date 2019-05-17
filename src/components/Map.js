@@ -2,7 +2,7 @@ import React from 'react'
 import mapboxgl from 'mapbox-gl'
 import { connect } from 'react-redux'
 
-import {showNodes} from '../redux/reducers/nodes'
+import {showTable} from '../redux/reducers/TableData'
 
 // Public key for mapbox API
 mapboxgl.accessToken = 'pk.eyJ1IjoiMTg1MTk5NjEiLCJhIjoiY2p2OWd4bThtMHNwNDN5cDU0OWZ6aTczeiJ9.I0UeX3pGMBHSet68Nx9R4w';
@@ -107,7 +107,7 @@ class Map extends React.Component {
 
     this.map.on('click', 'nodes', (point) =>{
       
-      this.props.dispatch(showNodes(point.features[0].properties.description));
+      this.props.dispatch(showTable(point.features[0].properties.description));
       
       //this.props.showNodes();
     })

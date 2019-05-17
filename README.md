@@ -18,8 +18,6 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.<br>
 You will also see any lint errors in the console.
 
-<<<<<<< HEAD
-=======
 ### Frontend Layout (`./`)
 
 ```
@@ -42,4 +40,3 @@ src
 ├── index.js              # Renders the App
 └── serviceWorker.js      # Built in React file
 ```
->>>>>>> 75a9acfe046674584e1ebbdd4d7250e3f2ee381d
