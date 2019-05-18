@@ -1,21 +1,28 @@
 import React from 'react';
 
 class Login extends React.Component {
-	dologin=(e)=>{
-		
-		e.preventDefault();
-		let username=this.refs.username.value;
-		let password=this.refs.password.value;
-		
-		if(username=="admin"&&password=="admin"){
+  
+  constructor(props){
+    super(props);
+    this.state = {
+    	userName: "",
+        userPassword: ""，
+      	loginstate:"false"
+    }
+  }
+  
+  handleClick(){
+		if(this.state.userName=="admin"&&this.state.userPassword=="admin"){
 			
 			//client page
-		this.setStatue({
-		loginstate:"true"}
-		)
+			this.setStatue({
+			loginstate:"true"
+        	})
 		}else{
 			alert("password is not match with this account");
 		}
+    this.props.login(this.state.userName,this.state.userPassword);
+    console.log(this.state);
 	}
 		
     render() {
@@ -26,15 +33,26 @@ class Login extends React.Component {
 		}
 
         return (
-		<div>
-		<form onsubmit={this.dologin}>
-		<input type="text" ref="username"/>
-		<br/>
-		<input type="password" ref="password"/>
-		<br/>
-		<input type="submit" value="login">
+		<div className="login-box">
+          <div className="login-title">Login</div>
+          <form action="" className="form-horizontal">
+          <div className="form-group input-text">
+          <label htmlFor="uname">account</label>
+			<input type="text" ref="username"/>
+          </div>
+          
+          <div className="form-group input-text">
+          <label htmlFor="upwd">password</label>
+			<input type="password" ref="password"/>
+          </div>
+          
+          <div className="form-group">
+			<button type="button" onClick={this.handleClick.bind(this,this.state.userName,this.state.userPassword)}>submit</button>
+      	  </div>
+      
 		</form>
-		</div>
+      
+      </div>
 	)};
 }
 	
