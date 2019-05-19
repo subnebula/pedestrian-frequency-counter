@@ -109,7 +109,6 @@ class Map extends React.Component {
       
       this.props.dispatch(showNodes(point.features[0].properties.description));
       
-      //this.props.showNodes();
     })
 
   }
