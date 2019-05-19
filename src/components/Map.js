@@ -1,21 +1,11 @@
-import React from 'react';
+import React from 'react'
 import mapboxgl from 'mapbox-gl'
-import { connect } from 'react-redux';
+import { connect } from 'react-redux'
 
-import {showNodes} from '../redux/reducers/nodes'
+import {showTable} from '../redux/reducers/tableData'
 
 // Public key for mapbox API
 mapboxgl.accessToken = 'pk.eyJ1IjoiMTg1MTk5NjEiLCJhIjoiY2p2OWd4bThtMHNwNDN5cDU0OWZ6aTczeiJ9.I0UeX3pGMBHSet68Nx9R4w';
-
-// Options list for toggle (toggle just for testing)
-const options = [{
-    name: 'Population',
-  }, {
-    name: 'GDP',
-  }, {
-    name: 'Test',
-  }
-]
 
 // Creates a new popup object
 var popup = new mapboxgl.Popup({
@@ -107,7 +97,7 @@ class Map extends React.Component {
 
     this.map.on('click', 'nodes', (point) =>{
       
-      this.props.dispatch(showNodes(point.features[0].properties.description));
+      this.props.dispatch(showTable(point.features[0].properties.description));
       
     })
 
@@ -120,22 +110,8 @@ class Map extends React.Component {
 
   render() {
 
-    const renderOptions = (option, i) => {
-      return (
-        <label key={i} className="toggle-container">
-          <input onChange={() => this.setState({ active: options[i] })} name="toggle" type="radio" />
-          <div className="toggle txt-s py3 toggle--active-white">{option.name}</div>
-        </label>
-      );
-    }
-
     return (
-      <div>
         <div className="absolute top right left bottom" ref={el => this.mapContainer = el}/>
-        <div className="toggle-group absolute top left ml12 mt12 border border--2 border--white bg-white shadow-darken10 z1">
-          {options.map(renderOptions)}
-        </div>
-      </div>
     );
   }
 }

@@ -6,7 +6,7 @@ Made with Node.js 10.15.3
 Run the commands from within the `frontend-sample` directory
 
 Before first run, install dependancies with:
-### `npm install react react-redux redux-thunk`
+### `npm install`
 
 Start the app with:
 

@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import InfoTableRow from './InfoTableRow';
 
-import {hideTable} from '../redux/reducers/TableData'
+import {hideTable} from '../redux/reducers/tableData'
 
 class InfoTable extends React.Component {
 
