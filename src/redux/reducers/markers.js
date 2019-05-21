@@ -1,8 +1,12 @@
+import axios from 'axios'
+const LOAD_MARKERS = 'LOAD_MARKERS';
+
 const initialState = {
   data: [
     {
       type: 'Feature',
       properties: {
+        id: '9000000000010000',
         description: "View St"
       },
       geometry: {
@@ -13,6 +17,7 @@ const initialState = {
     {
       type: 'Feature',
       properties: {
+        id: '9000000000010001',
         description: "Bernard St"
       },
       geometry: {
@@ -23,6 +28,7 @@ const initialState = {
     {
       type: 'Feature',
       properties: {
+        id: '9000000000010002',
         description: "Henry St"
       },
       geometry: {
@@ -33,6 +39,7 @@ const initialState = {
     {
       type: 'Feature',
       properties: {
+        id: '9000000000010003',
         description: "Forest St"
       },
       geometry: {
@@ -43,7 +50,30 @@ const initialState = {
   ]
 }
 
-export default function reducer(state = initialState) {
-    
-  return state;
+export default function reducer(state = initialState, action) {
+
+  switch(action.type) {
+    case LOAD_MARKERS:
+      return ( Object.assign({}, state, {
+        data: action.data
+      }) );
+
+    default:
+      return state;
+    }    
+}
+
+export function loadMarkers() {
+  return (dispatch) => {
+    axios.get('http://localhost:1880/sensor-nodes')
+    .then(response => {
+      dispatch({
+        type: LOAD_MARKERS,
+        data: response.data
+      })
+    })
+    .catch(error => {
+      console.log(error);
+    });
+  }
 }

@@ -57,9 +57,9 @@ class InfoTable extends React.Component {
 
 const InfoTableContainer = connect(
     state => ({
-        data: state.tableData.data.data,
+        data: state.tableData.data,
         visible: state.tableData.visible,
-        location: state.tableData.data.location
+        location: state.tableData.location
     }),
   )(InfoTable)
 

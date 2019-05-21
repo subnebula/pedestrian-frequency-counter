@@ -1,8 +1,10 @@
+import axios from 'axios'
 const SHOW_TABLE = 'SHOW_TABLE';
 const HIDE_TABLE = 'HIDE_TABLE';
 
 const initialState = {
     visible: false,
+    location: null,
     data: [
         {   
             location:"View St", 
@@ -66,9 +68,13 @@ function reducer(state = initialState, action) {
         case SHOW_TABLE: 
             return Object.assign({}, state, {
                 visible: true,
-                data: initialState.data.filter( data => {
-                    return data.location === action.location;
-                })[0] // Have to get the 0th element of the returned array for some reason
+                location: action.location,
+                data: action.data
+                
+                    /*initialState.data.filter( data => {
+                    return data.location === action.location; 
+                    */
+                //})[0] // Have to get the 0th element of the returned array for some reason 
             })
         
         case HIDE_TABLE:
@@ -82,8 +88,22 @@ function reducer(state = initialState, action) {
     
 }
 
-export function showTable(location) {
-    return { type: SHOW_TABLE, location: location}
+export function showTable(id, location) {
+
+    return (dispatch) => {
+        axios.get('http://localhost:1880/node-sensor-data/' + id)
+        .then(response => {
+
+            dispatch({
+                type: SHOW_TABLE, 
+                location: location, 
+                data: response.data
+            });
+        })
+        .catch(error => {
+            console.log(error);
+        });
+    }
 }
 
 export function hideTable() {
