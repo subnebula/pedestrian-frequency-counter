@@ -15,6 +15,23 @@ var popup = new mapboxgl.Popup({
   anchor: "top-left"
   });
 
+const key = {
+  name: 'Pedestrians',
+  description: 'Number of pedestrians that have passed a point today',
+  property: 'ped_est',
+  stops: [
+    [0, '#f8d5cb'],
+    [10, '#f5b9bb'],
+    [20, '#f3a7bc'],
+    [30, '#f195c4'],
+    [40, '#ef83d5'],
+    [50, '#ec72ec'],
+    [60, '#c691ea'],
+    [70, '#9f50e8'],
+    ['80+', '#6e40e6']
+  ]
+}
+
 
 // Defines Map component
 class Map extends React.Component {
@@ -27,9 +44,11 @@ class Map extends React.Component {
     //create a new map object, centers it and sets default zoom
     this.map = new mapboxgl.Map({
       container: this.mapContainer,
-      style: 'mapbox://styles/mapbox/streets-v10',
-      center: [144.282600, -36.758900],
-      zoom: 14
+      style: 'mapbox://styles/mapbox/light-v10',
+      sprite: 'mapbox://sprites/mapbox/bright-v9',
+      center: [144.279283,-36.757203],//[144.282600, -36.758900],
+      zoom: 14,
+      hash: true
     });    
 
     // Add zoom controls to map
@@ -37,21 +56,13 @@ class Map extends React.Component {
       new mapboxgl.NavigationControl()
     );
 
-    /* this.props.markers.forEach( (marker) => {
-    
-      // make a marker for each feature and add to the map
-      new mapboxgl.Marker()
-        .setLngLat(marker.geometry.coordinates)
-        .addTo(this.map);
-    }); */
-
     // Once the map loads
     this.map.on('load', () => {
       
-      // Add a layer of all the sensor nodes to the map
+      // Add a heatmap layer to the map
       this.map.addLayer({
-        "id": "nodes",
-        "type": "circle",
+        "id": "heatmap",
+        "type": "heatmap",
         "source": {
           // Defines that the data is in GEOJSON format
           "type": "geojson",
@@ -62,8 +73,103 @@ class Map extends React.Component {
           }
         },
         "paint": {
-          "circle-radius": 7,
-          "circle-color": "#4286f4"
+          'heatmap-color': [
+            'interpolate',
+            ['linear'],
+            ['heatmap-density'],
+            0, 'rgba(248,213,204,0)',
+            0.1, '#f4bfb6',
+            0.2, '#f1a8a5',
+            0.3, '#ee8f9a',
+            0.4, '#ec739b',
+            0.5, '#dd5ca8',
+            0.6, '#c44cc0',
+            0.7, '#9f43d7',
+            0.8, '#6e40e6'
+          ],
+          'heatmap-weight': {
+            property: 'total',
+            stops: [
+              [1, 0],
+              [62, 1]
+            ]
+          },
+          'heatmap-opacity': {
+            default: 1,
+            stops: [
+              [14, 1],
+              [15, 0]
+            ]
+          },
+          // increase intensity as zoom level increases
+          'heatmap-intensity': {
+            stops: [
+              [11, 1],
+              [15, 3]
+            ]
+          },
+          // increase radius as zoom increases
+          'heatmap-radius': {
+            stops: [
+              [11, 22],
+              [15, 28]
+            ]
+          }
+        }
+        
+      });
+      // Add a heatmap layer to the map
+      this.map.addLayer({
+        "id": "nodes",
+        "type": "circle",
+        "layout":{
+        },
+        "source": {
+          // Defines that the data is in GEOJSON format
+          "type": "geojson",
+          "data": {
+            "type": "FeatureCollection",
+            // The list of sensors is read from the redux store
+            "features":this.props.markers
+          }
+        },
+        "paint": {
+          'circle-color': {
+            property: 'total',
+            stops: [
+              [0, '#f8d5cb'],
+              [10, '#f5b9bb'],
+              [20, '#f3a7bc'],
+              [30, '#f195c4'],
+              [40, '#ef83d5'],
+              [50, '#ec72ec'],
+              [60, '#c691ea'],
+              [70, '#9f50e8'],
+              [80, '#6e40e6']
+            ]
+            /* stops: [
+              [0, "#5f1d9a"],
+              [15, '#742185'],
+              [30, '#892670'],
+              [45, '#9f2b5c'],
+              [60, '#b42f47'],
+              [75, '#ca3433'],
+              [90, '#df931e'],
+              [115, '#f53e0a']
+            ]  */
+          },
+          'circle-radius': {
+            'base': 1.75,
+            'stops': [
+              [11, 1], 
+              [16, 13]]
+          },
+          'circle-opacity': {
+            stops: [
+              [14, 0],
+              [15, 1]
+            ]
+          }
         }
       });
     });
@@ -99,6 +205,8 @@ class Map extends React.Component {
     });
 
     this.map.on('click', 'nodes', (point) =>{
+
+      this.map.flyTo({center: point.features[0].geometry.coordinates});
       
       this.props.dispatch(showTable(
         point.features[0].properties.id,
@@ -116,8 +224,25 @@ class Map extends React.Component {
 
   render() {
 
+    const renderLegendKeys = (stop, i) => {
+      return (
+        <div key={i} className='txt-s'>
+          <span className='mr6 round-full w12 h12 inline-block align-middle' style={{ backgroundColor: stop[1] }} />
+          <span>{`${stop[0].toLocaleString()}`}</span>
+        </div>
+      );
+    }
+
     return (
+      <div>
         <div className="absolute top right left bottom" ref={el => this.mapContainer = el}/>
+        <div className="bg-white absolute bottom left ml12 mb36 py12 px12 shadow-darken10 round z1 wmax180">
+          <div className='mb6'>
+            <h2 className="txt-bold txt-s block">{key.name}</h2>
+          </div>
+          {key.stops.map(renderLegendKeys)}
+        </div>
+      </div>
     );
   }
 }
