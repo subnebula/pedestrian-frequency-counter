@@ -1,6 +1,7 @@
 import React from 'react'
 import InfoTable from './InfoTable'
 import Map from './Map'
+import AddNode from './AddNode'
 import { Provider } from 'react-redux'
 import { store } from '../redux/store'
 
@@ -17,6 +18,7 @@ class Home extends React.Component {
             <Provider store={store}>
                 <div className='map'>
                     <Map/>
+                    <AddNode/>
                     <InfoTable/>
                 </div>
             </Provider>
