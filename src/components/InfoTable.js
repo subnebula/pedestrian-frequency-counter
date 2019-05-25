@@ -27,7 +27,7 @@ class InfoTable extends React.Component {
 
             <div className="bg-white absolute bottom right mr12 mb24 py12 px12 shadow-darken10 round z1 wmax380 hmax50">
             <h2>{this.props.location}
-            <button className='btn btn-danger text-right'onClick={onClickClose}>
+            <button className='btn btn-danger absolute top right'onClick={onClickClose}>
                             <i className="fas fa-times"/>
                         </button>
                         </h2>
