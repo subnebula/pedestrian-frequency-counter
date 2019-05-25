@@ -2,8 +2,8 @@ import React from 'react'
 import mapboxgl from 'mapbox-gl'
 import { connect } from 'react-redux'
 
-import {showTable} from '../redux/reducers/tableData'
-import {loadMarkers} from '../redux/reducers/markers'
+import { showTable } from '../redux/reducers/tableData'
+import { loadMarkers } from '../redux/reducers/markers'
 
 // Public key for mapbox API
 mapboxgl.accessToken = 'pk.eyJ1IjoiMTg1MTk5NjEiLCJhIjoiY2p2OWd4bThtMHNwNDN5cDU0OWZ6aTczeiJ9.I0UeX3pGMBHSet68Nx9R4w';
@@ -35,6 +35,8 @@ const key = {
 
 // Defines Map component
 class Map extends React.Component {
+
+
 
   // If/when the component mounts
   componentDidMount() {

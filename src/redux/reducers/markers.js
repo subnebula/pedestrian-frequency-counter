@@ -1,5 +1,6 @@
 import axios from 'axios'
 const LOAD_MARKERS = 'LOAD_MARKERS';
+const ADD_NODE = 'ADD_NODE'
 
 const initialState = {
   data: [
@@ -57,6 +58,14 @@ export default function reducer(state = initialState, action) {
       return ( Object.assign({}, state, {
         data: action.data
       }) );
+    
+    case ADD_NODE:
+      if(action.error) {
+        alert(action.error); //make this somehing more meaningful
+        return state;
+      }
+      window.location.reload();
+      return state;
 
     default:
       return state;
@@ -74,6 +83,24 @@ export function loadMarkers() {
     })
     .catch(error => {
       console.log(error);
+      
+    });
+  }
+}
+
+export function addNode(node) {
+  return (dispatch) => {
+    axios.post('http://localhost:1880/sensor-nodes', node)
+    .then(response => {
+      console.log(response);
+      dispatch({type: ADD_NODE, node: node});
+    })
+    .catch(error => {
+      console.log(error);
+      dispatch({
+        type: ADD_NODE,
+        error: error
+      })
     });
   }
 }

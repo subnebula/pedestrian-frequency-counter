@@ -1,6 +1,8 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal'
+import {addNode} from '../redux/reducers/markers'
 
 class AddNode extends React.Component {
     constructor(props, context) {
@@ -31,7 +33,13 @@ class AddNode extends React.Component {
     }
 
     handleSubmit(event) {
-        alert(this.state.devid);
+        this.props.dispatch(
+            addNode({
+                devid: this.state.devid,
+                lat: this.state.lat,
+                lng: this.state.lng,
+                street: this.state.street
+            }));
         this.setState({ show: false });
         event.preventDefault();
     }
@@ -53,7 +61,7 @@ class AddNode extends React.Component {
     render() {
         return (
             <>
-                <Button className='absolute top left mt12 ml12' variant="primary" onClick={this.handleShow}>
+                <Button className='absolute top left mt12 ml12 shadow-darken10' variant="primary" onClick={this.handleShow}>
                     Add a Node
                 </Button>
         
@@ -96,68 +104,12 @@ class AddNode extends React.Component {
             </>
         );
     }
-    
-/*     constructor(props) {
-        super(props);
-        this.state = {
-            visible: true,
-            devid: '',
-            lat: '',
-            lng: '',
-            street: ''
-        }
+}
 
-        this.handleInputChange = this.handleInputChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-    }
+const AddNodeContainer = connect(
+    state => ({
+        markers: state.markers.data
+      }),
+  )(AddNode)
 
-    handleInputChange(event) {
-        const target = event.target;
-        const value = target.value;
-        const name = target.name;
-    
-        this.setState({
-          [name]: value
-        });
-      }
-
-    handleSubmit(event) {
-        alert(this.state.devid);
-        event.preventDefault();
-    }
-    render(){
-        if (this.state.visible){
-            return(
-                <form onSubmit={this.handleSubmit} className='absolute mx-auto bg-white shadow-darken10 round z1 w300 h300 mt12'>
-                    <label>
-                        Device ID: 
-                        <input name='devid' type='text' value={this.state.devid}
-                            onChange={this.handleInputChange}/>
-                    </label><br/>
-                    <label>
-                        Latitude: 
-                        <input name='lat' type='text' value={this.state.lat}
-                            onChange={this.handleInputChange}/>
-                    </label><br/>
-                    <label>
-                        Longitude: 
-                        <input name='lng' type='text' value={this.state.lng}
-                            onChange={this.handleInputChange}/>
-                    </label><br/>
-                    <label>
-                        Street Name: 
-                        <input name='street' type='text' value={this.state.street}
-                            onChange={this.handleInputChange}/>
-                    </label><br/>
-                    <input type='submit' value='Submit'/>
-                </form>
-            );
-        } else {
-            return null;
-        }
-    }*/
-
-
-} 
-
-export default AddNode
+export default AddNodeContainer
