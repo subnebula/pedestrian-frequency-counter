@@ -23,12 +23,13 @@ class InfoTable extends React.Component {
 
         if (this.props.visible) {
             return(
-                <div className="bg-white absolute bottom right mr12 mb24 py12 px12 shadow-darken10 round z1 wmax380 hmax50">
+                <div className="bg-white absolute bottom right mr12 mb24 py12 px12 shadow-darken10 round z1 w360 h360">
                     <div>
-                        {this.props.location}
-                        <button className='btn btn-danger text-right'onClick={onClickClose}>
+                        <div className='txt-h2 ml6 mt6'>{this.props.location}
+                        <button className='btn btn--red absolute top right mr6 mt6'onClick={onClickClose}>
                             <i className="fas fa-times"/>
                         </button>
+                        </div>
                     </div>
                     <div>
                         <table>
