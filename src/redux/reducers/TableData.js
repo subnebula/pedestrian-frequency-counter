@@ -66,7 +66,7 @@ function reducer(state = initialState, action) {
     
     switch(action.type) {
         case SHOW_TABLE: {
-
+            
             if (action.data === null) {
                 return Object.assign({}, state, {
                     visible: true,
@@ -98,7 +98,7 @@ function reducer(state = initialState, action) {
 export function showTable(id, location) {
 
     return (dispatch) => {
-        axios.get('http://localhost:1880/node-sensor-data/' + id)
+        axios.get('/node-sensor-data/' + id)
         .then(response => {
 
             dispatch({

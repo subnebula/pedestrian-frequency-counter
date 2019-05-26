@@ -61,7 +61,7 @@ class AddNode extends React.Component {
     render() {
         return (
             <>
-                <Button className='absolute top left mt12 ml12 shadow-darken10' variant="primary" onClick={this.handleShow}>
+                <Button className='absolute top left mt12 ml12 shadow' variant="light" onClick={this.handleShow}>
                     Add a Node
                 </Button>
         
@@ -71,27 +71,31 @@ class AddNode extends React.Component {
                     </Modal.Header>
                     <Modal.Body>
                         <form>
-                            <label>
-                                Device ID: 
-                                <input name='devid' type='text' value={this.state.devid}
+                            <div className='form-group'>
+                                <label>Device ID:</label>
+                                <input className='form-control' name='devid' type='text' value={this.state.devid}
                                     onChange={this.handleInputChange}/>
-                            </label><br/>
-                            <label>
-                                Latitude: 
-                                <input name='lat' type='text' value={this.state.lat}
+                                <small id="devid help" class="form-text text-muted">
+                                    This is the device ID from the things network
+                                </small>
+                            </div>
+                            <div className='form-group'>
+                                <label>Latitude:</label>
+                                <input className='form-control' name='lat' type='text' value={this.state.lat}
                                     onChange={this.handleInputChange}/>
-                            </label><br/>
-                            <label>
-                                Longitude: 
-                                <input name='lng' type='text' value={this.state.lng}
+                            </div>
+                            <div className='form-group'>
+                                <label>Longitude:</label>
+                                <input className='form-control' name='lng' type='text' value={this.state.lng}
                                     onChange={this.handleInputChange}/>
-                            </label><br/>
-                            <label>
-                                Street Name: 
-                                <input name='street' type='text' value={this.state.street}
+                            </div>
+                            <div className='form-group'>
+                                <label>Street Name/Description:</label>
+                                <input className='form-control' name='street' type='text' value={this.state.street}
                                     onChange={this.handleInputChange}/>
-                            </label><br/>
-                        </form></Modal.Body>
+                            </div>
+                        </form>
+                    </Modal.Body>
                     <Modal.Footer>
                         <Button variant="secondary" onClick={this.handleCancel}>
                             Cancel

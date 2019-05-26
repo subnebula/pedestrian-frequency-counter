@@ -1,8 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import InfoTableRow from './InfoTableRow';
-
-import {hideTable} from '../redux/reducers/tableData'
+import Table from 'react-bootstrap/Table'
+import {hideTable} from '../redux/reducers/TableData'
 
 class InfoTable extends React.Component {
 
@@ -23,16 +23,15 @@ class InfoTable extends React.Component {
 
         if (this.props.visible) {
             return(
-                <div className="bg-white absolute bottom right mr12 ml24 mb36 py12 px12 shadow-darken10 round z1 wmax360 hmax360">
-                    <div>
-                        <div className='txt-h3 py0 px0'>{this.props.location}
-                        <button className='btn btn--red absolute top right mr6 mt6' onClick={onClickClose}>
+                <div className="absolute bottom right mr12 ml24 mb36 py12 px12 shadow z1 w360 hmax360 card">
+                    <div className='card-body'>
+                        <h4 className='card-title'>{this.props.location}</h4>
+                        <button className='close absolute top right mr-3 mt-2' onClick={onClickClose}>
                             <i className="fas fa-times"/>
-                        </button>
-                        </div>
+                        </button> 
                     </div>
-                    <div>
-                        <table>
+                    <div className='overflow-auto mr3 ml3 px0 py0 hmax300'>
+                        <table className='table'>
                             <thead>
                                 <tr>
                                     <th>Time</th>

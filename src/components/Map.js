@@ -2,8 +2,9 @@ import React from 'react'
 import mapboxgl from 'mapbox-gl'
 import { connect } from 'react-redux'
 
-import { showTable } from '../redux/reducers/tableData'
+import { showTable } from '../redux/reducers/TableData'
 import { loadMarkers } from '../redux/reducers/markers'
+import { isMobile } from 'react-device-detect';
 
 // Public key for mapbox API
 mapboxgl.accessToken = 'pk.eyJ1IjoiMTg1MTk5NjEiLCJhIjoiY2p2OWd4bThtMHNwNDN5cDU0OWZ6aTczeiJ9.I0UeX3pGMBHSet68Nx9R4w';
@@ -149,16 +150,6 @@ class Map extends React.Component {
               [70, '#9f50e8'],
               [80, '#6e40e6']
             ]
-            /* stops: [
-              [0, "#5f1d9a"],
-              [15, '#742185'],
-              [30, '#892670'],
-              [45, '#9f2b5c'],
-              [60, '#b42f47'],
-              [75, '#ca3433'],
-              [90, '#df931e'],
-              [115, '#f53e0a']
-            ]  */
           },
           'circle-radius': {
             'base': 1.75,
@@ -235,17 +226,24 @@ class Map extends React.Component {
       );
     }
 
-    return (
-      <div>
+    if (isMobile) {
+      return (
         <div className="absolute top right left bottom" ref={el => this.mapContainer = el}/>
-        <div className="bg-white absolute bottom left ml12 mb36 py12 px12 shadow-darken10 round z1 wmax180">
-          <div className='mb6'>
-            <h2 className="txt-bold txt-s block">{key.name}</h2>
+      );
+    } else {
+      return (
+        <div>
+          <div className="absolute top right left bottom" ref={el => this.mapContainer = el}/>
+          <div className="card absolute bottom left ml12 mb36 py12 px12 shadow z1 wmax180">
+            <div className='card-body px-0 py-0'>
+              <h2 className="card-text txt-s block px-0 py-0">{key.name}</h2>
+            
+            {key.stops.map(renderLegendKeys)}
+            </div>
           </div>
-          {key.stops.map(renderLegendKeys)}
         </div>
-      </div>
-    );
+      );
+    }
   }
 }
 

@@ -1,4 +1,5 @@
 import axios from 'axios'
+axios.defaults.port = '1880';
 const LOAD_MARKERS = 'LOAD_MARKERS';
 const ADD_NODE = 'ADD_NODE'
 
@@ -74,7 +75,7 @@ export default function reducer(state = initialState, action) {
 
 export function loadMarkers() {
   return (dispatch) => {
-    axios.get('http://localhost:1880/sensor-nodes')
+    axios.get('/sensor-nodes')
     .then(response => {
       dispatch({
         type: LOAD_MARKERS,
@@ -90,7 +91,7 @@ export function loadMarkers() {
 
 export function addNode(node) {
   return (dispatch) => {
-    axios.post('http://localhost:1880/sensor-nodes', node)
+    axios.post('/sensor-nodes', node)
     .then(response => {
       console.log(response);
       dispatch({type: ADD_NODE, node: node});
