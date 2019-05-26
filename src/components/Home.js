@@ -1,7 +1,8 @@
 import React from 'react';
 import NodeList from './NodeList';
 import Map from './Map';
-import Menu from './Menu';
+//import Menu from './Menu';
+import NavbarTop from './NavbarTop';
 import { Provider } from 'react-redux';
 import { store } from '../redux/store'
 
@@ -19,7 +20,10 @@ class Home extends React.Component {
             <Provider store={store}>
                 <Map/>
                 <NodeList/>
-                <Menu/>
+                <NavbarTop/>
+                
+                
+               
             </Provider>
         );
     }
