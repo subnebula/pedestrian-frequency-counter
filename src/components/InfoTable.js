@@ -1,7 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import InfoTableRow from './InfoTableRow';
-import Table from 'react-bootstrap/Table'
 import {hideTable} from '../redux/reducers/TableData'
 
 class InfoTable extends React.Component {
