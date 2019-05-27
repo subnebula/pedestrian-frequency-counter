@@ -2,6 +2,10 @@ import React from 'react'
 import { connect } from 'react-redux'
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal'
+import Tabs from 'react-bootstrap/Tabs'
+import Tab from 'react-bootstrap/Tab'
+import AddNodeForm from './AddNodeForm'
+import NodeList from './NodeList'
 import {addNode} from '../redux/reducers/markers'
 
 class AddNode extends React.Component {
@@ -62,39 +66,29 @@ class AddNode extends React.Component {
         return (
             <>
                 <Button className='absolute top left mt12 ml12 shadow' variant="light" onClick={this.handleShow}>
-                    Add a Node
+                    Nodes
                 </Button>
-        
+
                 <Modal show={this.state.show} onHide={this.handleCancel}>
                     <Modal.Header closeButton>
-                        <Modal.Title>Add A Node</Modal.Title>
+                        <Modal.Title>Nodes</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        <form>
-                            <div className='form-group'>
-                                <label>Device ID:</label>
-                                <input className='form-control' name='devid' type='text' value={this.state.devid}
-                                    onChange={this.handleInputChange}/>
-                                <small id="devid help" class="form-text text-muted">
-                                    This is the device ID from the things network
-                                </small>
-                            </div>
-                            <div className='form-group'>
-                                <label>Latitude:</label>
-                                <input className='form-control' name='lat' type='text' value={this.state.lat}
-                                    onChange={this.handleInputChange}/>
-                            </div>
-                            <div className='form-group'>
-                                <label>Longitude:</label>
-                                <input className='form-control' name='lng' type='text' value={this.state.lng}
-                                    onChange={this.handleInputChange}/>
-                            </div>
-                            <div className='form-group'>
-                                <label>Street Name/Description:</label>
-                                <input className='form-control' name='street' type='text' value={this.state.street}
-                                    onChange={this.handleInputChange}/>
-                            </div>
-                        </form>
+                        <Tabs defaultActiveKey="add" transition={false} id="noanim-tab-example">
+                            <Tab eventKey="add" title="Add a Node">
+                                <AddNodeForm 
+                                    handleInputChange={this.handleInputChange}
+                                    devid={this.state.devid}
+                                    lat={this.state.lat}
+                                    lng={this.state.lng}
+                                    street={this.state.street}/>
+                            </Tab>
+                            <Tab eventKey="view" title="View All Nodes">
+                                <NodeList
+                                    markers={this.props.markers}/>
+                            </Tab>
+                        </Tabs>
+                        
                     </Modal.Body>
                     <Modal.Footer>
                         <Button variant="secondary" onClick={this.handleCancel}>
