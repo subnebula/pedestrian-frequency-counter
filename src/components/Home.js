@@ -3,6 +3,7 @@ import InfoTable from './InfoTable'
 import Map from './Map'
 import AddNode from './AddNode'
 import { Provider } from 'react-redux'
+import NavbarTop from './NavbarTop';
 import { store } from '../redux/store'
 
 // Create a react component called "Home"
@@ -20,6 +21,7 @@ class Home extends React.Component {
                     <Map/>
                     <AddNode/>
                     <InfoTable/>
+                    <NavbarTop/>
                 </div>
             </Provider>
         );

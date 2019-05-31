@@ -1,0 +1,49 @@
+html, body{ margin: 0; padding: 0;  }
+
+/*Menu toggle button*/
+#menu-btn{ 
+  font-size:large;
+  width: 0.5em;
+  padding: 0.5em;
+  transition: all .2s ease-out;
+}
+  /*Cursor on toggle button hover*/
+  #menu-btn:hover{ cursor: pointer; }
+
+
+/*List container*/
+#menu{ 
+  position: absolute; 
+  z-index:9999;
+  top: 4.5em; left: 1em; 
+  border: .5em solid Black; 
+  width: 10em;
+  padding: 1em;
+  background: white;
+}
+  /*List*/
+  #menu ul{ padding: 0; margin: 0; }
+    /*List items*/
+    #menu ul li{ 
+      list-style-type: none; 
+      left: 0; 
+      padding: .5em;
+      color: Black;
+      transition: all .3s ease-out;
+    }
+    /*Subscribe link*/
+    #menu ul li:last-child{
+      margin-top: .5em;
+      padding-top: 1em;
+      border-top: 1px solid Black;
+    } 
+      /*Cursor and text undelrine on hover*/
+      #menu ul li:hover{
+        cursor: pointer;
+        font-weight:bold;
+        text-decoration: underline;
+      }
+      /*text colour change on click*/
+      #menu ul li:active{
+        color: rgba(52, 73, 94,1.0);
+      }
