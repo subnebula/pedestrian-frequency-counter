@@ -18,6 +18,7 @@ class Home extends React.Component {
         // <NodeList/> is the NodeList.js component
         return (
             <Provider store={store}>
+               
                 <Map/>
                 <NodeList/>
                 <NavbarTop/>
