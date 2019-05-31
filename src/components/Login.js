@@ -58,8 +58,4 @@ class Login extends React.Component {
 }
 export default login;
 	
-<<<<<<< HEAD
 	
-=======
-	
->>>>>>> 8023d565cc5685d2fec70331bc145ffb994e2797
