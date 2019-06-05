@@ -16,27 +16,31 @@ This runs the app in the development mode.<br>
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+You will also see any errors in the console.
 
 ### Frontend Layout (`./`)
 
 ```
 public
-├── favicon.ico           # Default react icon, can replace with custom icon
-├── index.html            # Base HTML code
-├── manifest.json         # JSON manifest file
-src
-├── components            # React component definitions
-│   ├── Home.js           # Contains Map and NodeList components, connects to redux store
-│   ├── Map.js            # Map component and pieces attaced to map
-│   ├── Node.js           # Node details
-│   └── NodeList.js       # A list of nodes
-├── redux                 # 
-│   ├── nodes.js          # Node data, currently hardcoded
-│   └── store.js          # defines the reduxtore
-├── App.css               # CSS for App.js file
-├── App.js                # Contains home component (Redundant?)
-├── index.css             # CSS for index.js file
-├── index.js              # Renders the App
-└── serviceWorker.js      # Built in React file
+├── favicon.ico             # Default react icon, can replace with custom icon
+├── index.html              # Base HTML code
+├── manifest.json           # JSON manifest file
+src                         # Javascript and CSS source files
+├── components              # React component definitions
+│   ├── Home.js             # Contains Map and InfoTable components, connects to redux store
+│   ├── InfoTable.js        # Displays individual sensor data in a table
+│   ├── InfoTableRow.js     # File for building rows in the info table
+│   ├── Login.js            # Login component
+│   └── Map.js              # Map component and pieces attaced to map
+├── redux                   # All files related to redux
+│   ├── reducers            # Reducer files with actions
+│   │   ├── markers.js      # Currently stores a list of the test markers
+│   │   ├── tableData.js    # Currently stores temp sensor data
+│   ├── combinedReducers.js # A file that combines the reducers in ./reducers into a single reducer
+│   └── store.js            # defines the redux store
+├── App.css                 # CSS for App.js file
+├── App.js                  # Contains home component (Redundant?)
+├── index.css               # CSS for index.js file
+├── index.js                # Renders the App
+└── serviceWorker.js        # Built in React file
 ```
