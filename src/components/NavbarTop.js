@@ -8,23 +8,19 @@ render() {
  
     return (
         <>
-        <Navbar bg="gray" >
+        <Navbar bg="purple" >
         <Nav >
-        <Menu/>                              
-        </Nav>
-
-        
-        <Navbar.Collapse className="justify-content-center">
-        <Navbar.Text >                   
-      <h2>Bendigo Monitoring System  </h2>     
-      </Navbar.Text>
-      </Navbar.Collapse>
-      <Navbar sticky="bottom" />
-      < Navbar  sticky = "top"  />
-
-       </Navbar>
-       
-
+                <Nav.Item>
+                    <Menu/>   
+                </Nav.Item>                           
+            </Nav>
+            <Navbar.Collapse className='justify-content-end'>
+            <Navbar.Text >             
+                <h2>Bendigo Monitoring System  </h2>     
+            </Navbar.Text>
+            </Navbar.Collapse>
+            
+        </Navbar>
        </>
     )
 }

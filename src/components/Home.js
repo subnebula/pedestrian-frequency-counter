@@ -19,7 +19,6 @@ class Home extends React.Component {
             <Provider store={store}>
                 <div className='map'>
                     <Map/>
-                    <AddNode/>
                     <InfoTable/>
                     <NavbarTop/>
                 </div>

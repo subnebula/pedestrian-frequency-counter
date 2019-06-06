@@ -59,15 +59,18 @@ class AddNode extends React.Component {
     }
     
     handleShow() {
-        this.setState({ show: true });
+        this.setState(prevState => ({ 
+            show: !prevState.show 
+        }))
+        this.props.handleClick();
     }
     
     render() {
         return (
             <>
-                <Button className='absolute top left mt12 ml12 shadow' variant="light" onClick={this.handleShow}>
+                <a href={this.handleShow} onClick={this.handleShow} >
                     Nodes
-                </Button>
+                </a>
 
                 <Modal show={this.state.show} onHide={this.handleCancel}>
                     <Modal.Header closeButton>

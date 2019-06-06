@@ -49,7 +49,8 @@ class Map extends React.Component {
       container: this.mapContainer,
       style: 'mapbox://styles/mapbox/light-v10',
       sprite: 'mapbox://sprites/mapbox/bright-v9',
-      center: [144.279283,-36.757203],//[144.282600, -36.758900],
+      center: [144.279283,-36.757203],
+      logoPosition: 'top-right',
       zoom: 14,
       hash: true
     });    
@@ -228,15 +229,15 @@ class Map extends React.Component {
 
     if (isMobile) {
       return (
-        <div className="absolute top right left bottom" ref={el => this.mapContainer = el}/>
+        <div className="absolute top right left bottom map" ref={el => this.mapContainer = el}/>
       );
     } else {
       return (
         <div>
-          <div className="absolute top right left bottom" ref={el => this.mapContainer = el}/>
-          <div className="card absolute bottom left ml12 mb36 py12 px12 shadow z1 wmax180">
-            <div className='card-body px-0 py-0'>
-              <h2 className="card-text txt-s block px-0 py-0">{key.name}</h2>
+          <div className="absolute top right left bottom mt60" ref={el => this.mapContainer = el}/>
+          <div className="card absolute bottom left shadow z1">
+            <div className='card-body'>
+              <h2 className="card-text txt-s block">{key.name}</h2>
             
             {key.stops.map(renderLegendKeys)}
             </div>

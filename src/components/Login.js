@@ -12,22 +12,22 @@ class Login extends React.Component {
   }
   
   handleClick(){
-		if(this.state.userName=="admin"&&this.state.userPassword=="admin"){
+		if(this.state.userName === "admin"&&this.state.userPassword === "admin"){
 			
 			//client page
-			this.setStatue({
+			this.setState({
 			loginstate:"true"
         	})
 		}else{
 			alert("password is not match with this account");
 		}
-    this.props.login(this.state.userName,this.state.userPassword);
+    //this.props.login(this.state.userName,this.state.userPassword);
     console.log(this.state);
 	}
 		
     render() {
-		if(this.status.loginstate){
-			return <Redirect to="/"/>
+		if(this.state.loginstate){
+			//return <Redirect to="/"/>
 		}
 		else{
 		}
@@ -56,6 +56,6 @@ class Login extends React.Component {
 	)
     }
 }
-export default login;
+export default Login;
 	
 	
