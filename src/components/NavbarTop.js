@@ -8,7 +8,7 @@ render() {
  
     return (
         <>
-        <Navbar bg="purple" >
+        <Navbar bg="gray" >
         <Nav >
                 <Nav.Item>
                     <Menu/>   
