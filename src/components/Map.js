@@ -119,7 +119,7 @@ class Map extends React.Component {
 
     return (
       <div>
-        <div className="absolute top right left bottom" ref={el => this.mapContainer = el}/>
+        <div className="absolute right left top bottom" ref={el => this.mapContainer = el}/>
 
       </div>
     );
