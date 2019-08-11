@@ -28,15 +28,7 @@ render() {
 
        </Navbar>
        
-       <Navbar bg="blue" >
-       <Navbar.Collapse className="justify-content-center ">
-       <Navbar.Text>                   
-     BY Horizon    
-      </Navbar.Text>
-      </Navbar.Collapse>
-      <Navbar sticky="bottom" />
 
-       </Navbar>
        </>
     )
 }
