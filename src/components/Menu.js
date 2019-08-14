@@ -31,6 +31,7 @@ class Menu extends React.Component {
                 <li>LogIn</li>
                 <li><AddNode
                       handleClick={this.handleClick}
+                      markers={this.props.markers}
                     />
                 </li>
             </ul>

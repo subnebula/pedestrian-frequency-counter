@@ -1,9 +1,5 @@
 import React from 'react'
-import { connect } from 'react-redux'
-import Button from 'react-bootstrap/Button';
-import Modal from 'react-bootstrap/Modal'
-import Tabs from 'react-bootstrap/Tabs'
-import Tab from 'react-bootstrap/Tab'
+import {Button, Modal, Tabs, Tab} from 'react-bootstrap';
 import AddNodeForm from './AddNodeForm'
 import NodeList from './NodeList'
 import {addNode} from '../redux/reducers/markers'
@@ -107,10 +103,4 @@ class AddNode extends React.Component {
     }
 }
 
-const AddNodeContainer = connect(
-    state => ({
-        markers: state.markers.data
-      }),
-  )(AddNode)
-
-export default AddNodeContainer
+export default AddNode

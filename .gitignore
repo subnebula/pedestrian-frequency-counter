@@ -18,6 +18,8 @@
 .env.test.local
 .env.production.local
 .vs
+ClassDiagram.wsd
+/out
 
 npm-debug.log*
 yarn-debug.log*

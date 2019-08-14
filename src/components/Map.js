@@ -37,8 +37,6 @@ const key = {
 // Defines Map component
 class Map extends React.Component {
 
-
-
   // If/when the component mounts
   componentDidMount() {
 
