@@ -1,6 +1,7 @@
 import React from 'react';
 import './Menu.css';
 import AddNode from './AddNode'
+import ShowInfo from './ShowInfo'
 
 class Menu extends React.Component {
     constructor(props) {
@@ -27,10 +28,13 @@ class Menu extends React.Component {
           <nav id="menu"style={{display: this.state.display}}>
             <ul>
                 <li>Home</li>
-                <li>System Info</li>
+                <li><ShowInfo
+                handleClick={this.handleCick}
+                    />
+                </li>
                 <li>LogIn</li>
                 <li><AddNode
-                      handleClick={this.handleClick}
+                      handleClick={this.handleCick}
                       markers={this.props.markers}
                     />
                 </li>

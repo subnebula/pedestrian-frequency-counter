@@ -2,8 +2,9 @@ import React from 'react'
 import InfoTable from './InfoTable'
 import Map from './Map'
 import { Provider } from 'react-redux'
-import NavbarTop from './NavbarTop';
+import NavbarTop from './NavbarTop'
 import { store } from '../redux/store'
+import Charts from './Charts';
 
 // Create a react component called "Home"
 class Home extends React.Component {
@@ -20,6 +21,7 @@ class Home extends React.Component {
                     <Map/>
                     <InfoTable/>
                     <NavbarTop/>
+                    <Charts/>
                 </div>
             </Provider>
         );
