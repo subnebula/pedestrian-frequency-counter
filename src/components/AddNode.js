@@ -1,8 +1,8 @@
 import React from 'react'
-import {Button, Modal, Tabs, Tab} from 'react-bootstrap';
+import {Modal, Tabs, Tab} from 'react-bootstrap';
 import AddNodeForm from './AddNodeForm'
 import NodeList from './NodeList'
-import {addNode} from '../redux/reducers/markers'
+
 
 class AddNode extends React.Component {
     constructor(props, context) {
@@ -33,13 +33,13 @@ class AddNode extends React.Component {
     }
 
     handleSubmit(event) {
-        this.props.dispatch(
-            addNode({
+        this.props.dispatchSubmit(
+            {
                 devid: this.state.devid,
                 lat: this.state.lat,
                 lng: this.state.lng,
                 street: this.state.street
-            }));
+            });
         this.setState({ show: false });
         event.preventDefault();
     }
@@ -62,6 +62,7 @@ class AddNode extends React.Component {
     }
     
     render() {
+        
         return (
             <>
                 <a href={this.handleShow} onClick={this.handleShow} >
@@ -77,6 +78,8 @@ class AddNode extends React.Component {
                             <Tab eventKey="add" title="Add a Node">
                                 <AddNodeForm 
                                     handleInputChange={this.handleInputChange}
+                                    handleCancel={this.handleCancel}
+                                    handleSubmit={this.handleSubmit}
                                     devid={this.state.devid}
                                     lat={this.state.lat}
                                     lng={this.state.lng}
@@ -89,14 +92,6 @@ class AddNode extends React.Component {
                         </Tabs>
                         
                     </Modal.Body>
-                    <Modal.Footer>
-                        <Button variant="secondary" onClick={this.handleCancel}>
-                            Cancel
-                        </Button>
-                        <Button variant="primary" onClick={this.handleSubmit}>
-                            Submit
-                        </Button>
-                    </Modal.Footer>
                 </Modal>
             </>
         );

@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 
 
 class NavbarTop extends React.Component {
+    
     render() {
     
         return (
@@ -13,6 +14,7 @@ class NavbarTop extends React.Component {
             <Nav >
                     <Nav.Item>
                         <Menu
+                            dispatchSubmit={this.props.dispatch}
                             markers={this.props.markers}
                         />   
                     </Nav.Item>                           

@@ -1,6 +1,8 @@
 import React from 'react';
 import './Menu.css';
 import AddNode from './AddNode'
+import {addNode} from '../redux/reducers/markers'
+
 
 class Menu extends React.Component {
     constructor(props) {
@@ -12,7 +14,12 @@ class Menu extends React.Component {
 
         
         this.handleClick = this.handleClick.bind(this);
+        this.dispatchSubmit = this.dispatchSubmit.bind(this);
       }
+
+    dispatchSubmit(object){
+      this.props.dispatchSubmit(addNode(object));
+    }
 
       handleClick() {
         this.setState(prevState => ({
@@ -30,6 +37,7 @@ class Menu extends React.Component {
                 <li>System Info</li>
                 <li>LogIn</li>
                 <li><AddNode
+                      dispatchSubmit={this.dispatchSubmit}
                       handleClick={this.handleClick}
                       markers={this.props.markers}
                     />
