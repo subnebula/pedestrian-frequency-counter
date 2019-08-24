@@ -20,7 +20,7 @@ class NodeList extends React.Component {
                 <table className='table'>
                     <thead>
                         <tr>
-                            <th>Device ID</th>
+                            <th>Device ID<Button variant="delete" onClick={}>Delete</Button></th>
                             <th>Location</th>
                             <th>Street Name</th>
                         </tr>
