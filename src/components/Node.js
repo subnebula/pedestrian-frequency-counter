@@ -9,6 +9,7 @@ class Node extends React.Component {
                 <td>{this.props.node.properties.id}</td>
                 <td>{this.props.node.geometry.coordinates}</td>
                 <td>{this.props.node.properties.description}</td>
+          		<Button variant="delete" onClick={}>Delete</Button>
             </tr>
         );
     }
