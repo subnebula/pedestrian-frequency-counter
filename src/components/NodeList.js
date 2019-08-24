@@ -29,7 +29,6 @@ class NodeList extends React.Component {
                         {this.props.markers.map(createNodeListItem)}
                     </tbody>
                 </table>
-				<Button variant="delete" onClick={}>Delete</Button>
             </div>
         );
     }
