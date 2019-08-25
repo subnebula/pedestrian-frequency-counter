@@ -2,10 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import InfoTableRow from './InfoTableRow';
 import {hideTable} from '../redux/reducers/TableData'
-<<<<<<< HEAD
-=======
 import Charts from './Charts';
->>>>>>> Charles
 
 class InfoTable extends React.Component {
 
@@ -35,12 +32,9 @@ class InfoTable extends React.Component {
                             <i className="fas fa-times"/>
                         </button> 
                     </div>
-<<<<<<< HEAD
-=======
                     <div> 
                         <Charts graph={this.props.graph}/>
                     </div>
->>>>>>> Charles
                     <div className='overflow-auto mr3 ml3 px0 py0 hmax300'>
                         <table className='table'>
                             <thead>
