@@ -1,7 +1,7 @@
-import React, { Component } from "react";
+import React from "react";
 import ReactApexChart from "react-apexcharts";
 
-class Charts extends Component {
+class Charts extends React.Component {
   constructor(props) {
     super(props);
 
@@ -49,7 +49,7 @@ class Charts extends Component {
           title: {
             text: 'counter'
           },
-          min: 5,
+          min: 0,
           max: 40
         },
         legend: {
@@ -62,28 +62,65 @@ class Charts extends Component {
       },
       series: [
         {
-          name: "Walker",
-          data: [28, 29, 33, 36, 32, 32, 33]
+          name: "Pedestrian",
+          data: this.props.data.map( (row) => { //[28, 29, 33, 36, 32, 32, 33]
+            return(
+              row.pedl + row.pedr
+            );
+          })  
         },
         {
-          name: "Vehicle",
-          data: [12, 11, 14, 18, 17, 13, 13]
+          name: "Cyclist",
+          data: this.props.data.map( (row) => { //[12, 11, 14, 18, 17, 13, 13]
+            return(
+              row.cycll + row.cyclr
+            );
+          })
         }
       ],
+    }
+  }
+
+  componentWillReceiveProps(props) {
+    const data = this.props.data;
+    if (props.data !== data) {
+      this.setState((state, props) => {
+        return {series: [
+          {
+            name: "Pedestrian",
+            data: props.data.map( (row) => { //[28, 29, 33, 36, 32, 32, 33]
+              return(
+                row.pedl + row.pedr
+              );
+            })  
+          },
+          {
+            name: "Cyclist",
+            data: props.data.map( (row) => { //[12, 11, 14, 18, 17, 13, 13]
+              return(
+                row.cycll + row.cyclr
+              );
+            })
+          }
+        ]};
+      });
     }
   }
 
   render() {
 
     return (
-      
-
         <div id="chart">
-          <ReactApexChart options={this.state.options} series={this.state.series} type="line" height="250"width="250" />
+          <ReactApexChart 
+            options={this.state.options} 
+            series={this.state.series} 
+            type="line" 
+            height="250"
+            width="250" 
+          />
         </div>
-              );
-            }
-          }
-        
+    );
+  }
+}
 
 export default Charts;
