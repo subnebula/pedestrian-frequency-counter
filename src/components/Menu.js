@@ -1,7 +1,7 @@
 import React from 'react';
 import './Menu.css';
 import AddNode from './AddNode'
-//import ShowInfo from './ShowInfo'
+import ShowInfo from './ShowInfo'
 import RefreshHome from './RefreshHome'
 import {addNode} from '../redux/reducers/markers'
 
@@ -39,7 +39,9 @@ class Menu extends React.Component {
                 handleClick={this.handleClick}
                 />
                 </li>
-                <li>ShowInfo
+                <li><ShowInfo
+                  handleClick={this.handleClick}
+                />
 
                 </li>
                 <li>LogIn</li>
