@@ -8,7 +8,7 @@ class ShowInfo extends React.Component {
 
     handleInfo(e) {
         e.preventDefault();
-        if(ShowInfo.confirm('This is the Infomation')) {
+        if(show.confirm('This is the Infomation')) {
           console.log('Ok');
           return true;
         }

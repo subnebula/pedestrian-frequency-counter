@@ -1,4 +1,5 @@
-import React from 'react'
+import React from "react"
+import {Button} from "react-bootstrap"
 
 class AddNodeForm extends React.Component {
 
@@ -6,6 +7,14 @@ class AddNodeForm extends React.Component {
 
         const handleInputChange = (event) => {
             this.props.handleInputChange(event);
+        }
+        
+        const handleCancel = () => {
+            this.props.handleCancel();
+        }
+
+        const handleSubmit = (event) => {
+            this.props.handleSubmit(event);
         }
 
         return(
@@ -32,6 +41,14 @@ class AddNodeForm extends React.Component {
                     <label>Street Name/Description:</label>
                     <input className='form-control' name='street' type='text' value={this.props.street}
                         onChange={handleInputChange}/>
+                </div>
+                <div>
+                    <Button variant="secondary" onClick={handleCancel}>
+                        Cancel
+                    </Button>
+                    <Button variant="primary" onClick={handleSubmit}>
+                        Submit
+                    </Button>
                 </div>
             </form>
         );

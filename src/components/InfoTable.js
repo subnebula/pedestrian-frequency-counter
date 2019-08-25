@@ -33,7 +33,11 @@ class InfoTable extends React.Component {
                         </button> 
                     </div>
                     <div> 
-                        <Charts graph={this.props.graph}/>
+                        <Charts 
+                            location={this.props.location}
+                            graph={this.props.graph}
+                            data={this.props.data}
+                        />
                     </div>
                     <div className='overflow-auto mr3 ml3 px0 py0 hmax300'>
                         <table className='table'>
