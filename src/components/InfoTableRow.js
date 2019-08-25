@@ -4,16 +4,17 @@ class InfoTableRow extends React.Component {
 
     render() {
 
-        const convertTime = (time) => {
-            var date = new Date(time).toLocaleTimeString('default', {hour: '2-digit', minute: '2-digit'});
-            if (date !== "Invalid Date"){
-                return date;
+        const convertTime = (date) => {
+            console.log(date)
+            var dateJS = new Date(date).toLocaleTimeString('default', {hour: '2-digit', minute: '2-digit'});
+            if (dateJS !== "Invalid Date"){
+                return dateJS;
             }
         }
 
         return (
             <tr className="node">
-                <td>{convertTime(this.props.row.time) || this.props.row.time}</td>
+                <td>{convertTime(this.props.row.date)}</td>
                 <td>
                     {
                         this.props.row.pedl +
