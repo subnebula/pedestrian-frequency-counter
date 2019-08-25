@@ -5,6 +5,7 @@ class ShowInfo extends React.Component {
   constructor(props, context) {
       super(props, context);
       this.handleShow = this.handleShow.bind(this);
+      this.handleCancel = this.handleCancel.bind(this);
       this.state = {
         show: false
       };
@@ -20,7 +21,7 @@ class ShowInfo extends React.Component {
   handleCancel() {
     this.setState({ 
     show: false
-  });  this.props.handleClick();
+  });
 }
 
       render() {
