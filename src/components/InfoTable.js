@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import InfoTableRow from './InfoTableRow';
 import {hideTable} from '../redux/reducers/TableData'
+import Charts from './Charts';
 
 class InfoTable extends React.Component {
 
@@ -20,14 +21,23 @@ class InfoTable extends React.Component {
             this.props.dispatch(hideTable());
         }
 
-        if (this.props.visible) {
+        if (this.props.visible) { //mr12 ml12 py12 px12 w300 hmax360  z1
+
             return(
-                <div className="absolute bottom right mr12 ml24 mb36 py12 px12 shadow z1 w360 hmax360 card">
+                <div className="absolute bottom right shadow card z5">
                     <div className='card-body'>
                         <h4 className='card-title'>{this.props.location}</h4>
                         <button className='close absolute top right mr-3 mt-2' onClick={onClickClose}>
+
                             <i className="fas fa-times"/>
                         </button> 
+                    </div>
+                    <div> 
+                        <Charts 
+                            location={this.props.location}
+                            graph={this.props.graph}
+                            data={this.props.data}
+                        />
                     </div>
                     <div className='overflow-auto mr3 ml3 px0 py0 hmax300'>
                         <table className='table'>

@@ -1,5 +1,4 @@
 import axios from 'axios'
-axios.defaults.port = '1880';
 const LOAD_MARKERS = 'LOAD_MARKERS';
 const ADD_NODE = 'ADD_NODE'
 
