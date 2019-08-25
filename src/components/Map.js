@@ -1,13 +1,13 @@
-import React from 'react'
-import mapboxgl from 'mapbox-gl'
-import { connect } from 'react-redux'
+import React from "react"
+import mapboxgl from "mapbox-gl"
+import { connect } from "react-redux"
 
-import { showTable } from '../redux/reducers/TableData'
-import { loadMarkers } from '../redux/reducers/markers'
-import { isMobile } from 'react-device-detect';
+import { showTable } from "../redux/reducers/TableData"
+import { loadMarkers } from "../redux/reducers/markers"
+import { isMobile } from "react-device-detect";
 
 // Public key for mapbox API
-mapboxgl.accessToken = 'pk.eyJ1IjoiMTg1MTk5NjEiLCJhIjoiY2p2OWd4bThtMHNwNDN5cDU0OWZ6aTczeiJ9.I0UeX3pGMBHSet68Nx9R4w';
+mapboxgl.accessToken = "pk.eyJ1IjoiMTg1MTk5NjEiLCJhIjoiY2p2OWd4bThtMHNwNDN5cDU0OWZ6aTczeiJ9.I0UeX3pGMBHSet68Nx9R4w";
 
 // Creates a new popup object
 var popup = new mapboxgl.Popup({
@@ -17,19 +17,19 @@ var popup = new mapboxgl.Popup({
   });
 
 const key = {
-  name: 'Pedestrians',
-  description: 'Number of pedestrians that have passed a point today',
-  property: 'ped_est',
+  name: "Pedestrians",
+  description: "Number of pedestrians that have passed a point today",
+  property: "ped_est",
   stops: [
-    [0, '#f8d5cb'],
-    [10, '#f5b9bb'],
-    [20, '#f3a7bc'],
-    [30, '#f195c4'],
-    [40, '#ef83d5'],
-    [50, '#ec72ec'],
-    [60, '#c691ea'],
-    [70, '#9f50e8'],
-    ['80+', '#6e40e6']
+    [0, "#f8d5cb"],
+    [10, "#f5b9bb"],
+    [20, "#f3a7bc"],
+    [30, "#f195c4"],
+    [40, "#ef83d5"],
+    [50, "#ec72ec"],
+    [60, "#c691ea"],
+    [70, "#9f50e8"],
+    ["80+", "#6e40e6"]
   ]
 }
 
@@ -45,10 +45,10 @@ class Map extends React.Component {
     //create a new map object, centers it and sets default zoom
     this.map = new mapboxgl.Map({
       container: this.mapContainer,
-      style: 'mapbox://styles/mapbox/light-v10',
-      sprite: 'mapbox://sprites/mapbox/bright-v9',
+      style: "mapbox://styles/mapbox/light-v10",
+      sprite: "mapbox://sprites/mapbox/bright-v9",
       center: [144.279283,-36.757203],
-      logoPosition: 'top-right',
+      logoPosition: "top-right",
       zoom: 14,
       hash: true
     });    
@@ -59,7 +59,7 @@ class Map extends React.Component {
     );
 
     // Once the map loads
-    this.map.on('load', () => {
+    this.map.on("load", () => {
       
       // Add a heatmap layer to the map
       this.map.addLayer({
@@ -75,28 +75,28 @@ class Map extends React.Component {
           }
         },
         "paint": {
-          'heatmap-color': [
-            'interpolate',
-            ['linear'],
-            ['heatmap-density'],
-            0, 'rgba(248,213,204,0)',
-            0.1, '#f4bfb6',
-            0.2, '#f1a8a5',
-            0.3, '#ee8f9a',
-            0.4, '#ec739b',
-            0.5, '#dd5ca8',
-            0.6, '#c44cc0',
-            0.7, '#9f43d7',
-            0.8, '#6e40e6'
+          "heatmap-color": [
+            "interpolate",
+            ["linear"],
+            ["heatmap-density"],
+            0, "rgba(248,213,204,0)",
+            0.1, "#f4bfb6",
+            0.2, "#f1a8a5",
+            0.3, "#ee8f9a",
+            0.4, "#ec739b",
+            0.5, "#dd5ca8",
+            0.6, "#c44cc0",
+            0.7, "#9f43d7",
+            0.8, "#6e40e6"
           ],
-          'heatmap-weight': {
-            property: 'total',
+          "heatmap-weight": {
+            property: "total",
             stops: [
               [1, 0],
               [62, 1]
             ]
           },
-          'heatmap-opacity': {
+          "heatmap-opacity": {
             default: 1,
             stops: [
               [14, 1],
@@ -104,14 +104,14 @@ class Map extends React.Component {
             ]
           },
           // increase intensity as zoom level increases
-          'heatmap-intensity': {
+          "heatmap-intensity": {
             stops: [
               [11, 1],
               [15, 3]
             ]
           },
           // increase radius as zoom increases
-          'heatmap-radius': {
+          "heatmap-radius": {
             stops: [
               [11, 22],
               [15, 28]
@@ -136,27 +136,27 @@ class Map extends React.Component {
           }
         },
         "paint": {
-          'circle-color': {
-            property: 'total',
+          "circle-color": {
+            property: "total",
             stops: [
-              [0, '#f8d5cb'],
-              [10, '#f5b9bb'],
-              [20, '#f3a7bc'],
-              [30, '#f195c4'],
-              [40, '#ef83d5'],
-              [50, '#ec72ec'],
-              [60, '#c691ea'],
-              [70, '#9f50e8'],
-              [80, '#6e40e6']
+              [0, "#f8d5cb"],
+              [10, "#f5b9bb"],
+              [20, "#f3a7bc"],
+              [30, "#f195c4"],
+              [40, "#ef83d5"],
+              [50, "#ec72ec"],
+              [60, "#c691ea"],
+              [70, "#9f50e8"],
+              [80, "#6e40e6"]
             ]
           },
-          'circle-radius': {
-            'base': 1.75,
-            'stops': [
+          "circle-radius": {
+            "base": 1.75,
+            "stops": [
               [11, 1], 
               [16, 13]]
           },
-          'circle-opacity': {
+          "circle-opacity": {
             stops: [
               [14, 0],
               [15, 1]
@@ -168,8 +168,8 @@ class Map extends React.Component {
 
     // Change the cursor to a pointer when the mouse is over the places layer
     // and add a popup to it
-    this.map.on('mouseenter', 'nodes', (point) => {
-      this.map.getCanvas().style.cursor = 'pointer';
+    this.map.on("mouseenter", "nodes", (point) => {
+      this.map.getCanvas().style.cursor = "pointer";
       
       // Get the coordinates and description
       // of the point under the mouse
@@ -191,12 +191,12 @@ class Map extends React.Component {
     });
    
     // Change it back to a pointer when it leaves and remove popup
-    this.map.on('mouseleave', 'nodes', () => {
-      this.map.getCanvas().style.cursor = '';
+    this.map.on("mouseleave", "nodes", () => {
+      this.map.getCanvas().style.cursor = "";
       popup.remove();
     });
 
-    this.map.on('click', 'nodes', (point) =>{
+    this.map.on("click", "nodes", (point) =>{
 
       this.map.flyTo({center: point.features[0].geometry.coordinates});
       
@@ -218,8 +218,8 @@ class Map extends React.Component {
 
     const renderLegendKeys = (stop, i) => {
       return (
-        <div key={i} className='txt-s'>
-          <span className='mr6 round-full w12 h12 inline-block align-middle' style={{ backgroundColor: stop[1] }} />
+        <div key={i} className="txt-s">
+          <span className="mr6 round-full w12 h12 inline-block align-middle" style={{ backgroundColor: stop[1] }} />
           <span>{`${stop[0].toLocaleString()}`}</span>
         </div>
       );
@@ -234,7 +234,7 @@ class Map extends React.Component {
         <div>
           <div className="absolute top right left bottom mt60" ref={el => this.mapContainer = el}/>
           <div className="card absolute bottom left shadow z1">
-            <div className='card-body'>
+            <div className="card-body">
               <h2 className="card-text txt-s block">{key.name}</h2>
             
             {key.stops.map(renderLegendKeys)}
