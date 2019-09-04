@@ -69,7 +69,7 @@ class AddNode extends React.Component {
                     Nodes
                 </a>
 
-                <Modal show={this.state.show} onHide={this.handleCancel}>
+                <Modal show={this.state.show} onHide={this.handleCancel} size="lg"> 
                     <Modal.Header closeButton>
                         <Modal.Title>Nodes</Modal.Title>
                     </Modal.Header>

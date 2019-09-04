@@ -1,4 +1,5 @@
 import React from 'react';
+import Button from "react-bootstrap/Button"
 
 class Node extends React.Component {
 
@@ -9,7 +10,14 @@ class Node extends React.Component {
                 <td>{this.props.node.properties.id}</td>
                 <td>{this.props.node.geometry.coordinates}</td>
                 <td>{this.props.node.properties.description}</td>
-          		<Button variant="primary" onClick={}>Delete</Button>
+          		<td>
+                    <Button variant="primary" >
+                        <i className="fas fa-edit"></i> 
+                    </Button>
+                    <Button variant="danger" >
+                        <i className="fas fa-times"></i>
+                    </Button>
+                </td>
             </tr>
         );
     }
