@@ -2,6 +2,7 @@ import React from 'react';
 import './Menu.css';
 import AddNode from './AddNode'
 import ShowInfo from './ShowInfo'
+import RefreshHome from './RefreshHome'
 import {addNode} from '../redux/reducers/markers'
 
 
@@ -34,17 +35,23 @@ class Menu extends React.Component {
           <div id="menu-btn"><i className="fas fa-bars" onClick={this.handleClick}></i></div>
           <nav id="menu"style={{display: this.state.display}}>
             <ul>
-                <li>Home</li>
-                <li><ShowInfo
-                handleClick={this.handleCick}
-                    />
+                <li>
+                  <RefreshHome
+                    handleClick={this.handleClick}
+                  />
+                </li>
+                <li>
+                  <ShowInfo
+                    handleClick={this.handleClick}
+                  />
                 </li>
                 <li>LogIn</li>
-                <li><AddNode
-                      dispatchSubmit={this.dispatchSubmit}
-                      handleClick={this.handleClick}
-                      markers={this.props.markers}
-                    />
+                <li>
+                  <AddNode
+                    dispatchSubmit={this.dispatchSubmit}
+                    handleClick={this.handleClick}
+                    markers={this.props.markers}
+                  />
                 </li>
             </ul>
           </nav>
