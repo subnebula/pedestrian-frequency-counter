@@ -10,14 +10,15 @@ class NavbarTop extends React.Component {
     
         return (
             <>
-            <Navbar bg="gray" >
-            <Nav >
-                    <Nav.Item>
+            <Navbar bg="primary" expand="sm"  >
+            <Nav>
+                    <Nav.Item >
                         <Menu
                             dispatchSubmit={this.props.dispatch}
                             markers={this.props.markers}
                         />   
-                    </Nav.Item>                           
+                    </Nav.Item>   
+                     
                 </Nav>
                 <Navbar.Collapse className='justify-content-center'>
                 <Navbar.Text >             
