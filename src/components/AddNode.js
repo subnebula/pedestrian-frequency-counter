@@ -13,6 +13,7 @@ class AddNode extends React.Component {
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleEdit = this.handleEdit.bind(this);
+        this.handleDelete = this.handleDelete.bind(this);
     
         this.state = {
             activeKey: "add",
@@ -66,6 +67,9 @@ class AddNode extends React.Component {
         });
     }
     
+    handleDelete(node) {
+        this.props.dispatchDelete(node.properties.id)
+    }
     handleShow() {
         this.setState(prevState => ({ 
             show: !prevState.show 
@@ -102,6 +106,7 @@ class AddNode extends React.Component {
                                 <NodeList
                                     markers={this.props.markers}
                                     handleEdit={this.handleEdit}
+                                    handleDelete={this.handleDelete}
                                 />
                             </Tab>
                         </Tabs>

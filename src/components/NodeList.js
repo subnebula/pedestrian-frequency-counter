@@ -9,12 +9,17 @@ class NodeList extends React.Component {
             this.props.handleEdit(node);
         }
 
+        const handleDelete = (node) => {
+            this.props.handleDelete(node);
+        }
+
         const createNodeListItem = (node, i) => {
             return(
                 <Node
                     key = {i}
                     node = {node}
                     handleEdit = {handleEdit}
+                    handleDelete = {handleDelete}
                 />
                     
             )

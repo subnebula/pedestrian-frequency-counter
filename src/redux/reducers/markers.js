@@ -1,6 +1,7 @@
 import axios from 'axios'
 const LOAD_MARKERS = 'LOAD_MARKERS';
 const ADD_NODE = 'ADD_NODE'
+const DELETE_NODE = "DELETE_NODE"
 
 const initialState = {
   data: [
@@ -99,6 +100,23 @@ export function addNode(node) {
       console.log(error);
       dispatch({
         type: ADD_NODE,
+        error: error
+      })
+    });
+  }
+}
+
+export function deleteNode(nodeID) {
+  return (dispatch) => {
+    axios.delete('/sensor-nodes/' + nodeID)
+    .then(response => {
+      console.log(response);
+      dispatch({type: DELETE_NODE, node: nodeID});
+    })
+    .catch(error => {
+      console.log(error);
+      dispatch({
+        type: DELETE_NODE,
         error: error
       })
     });

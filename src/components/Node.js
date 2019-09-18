@@ -9,16 +9,21 @@ class Node extends React.Component {
             this.props.handleEdit(this.props.node);
         }
 
+        const deleteNode = () => {
+            this.props.handleDelete(this.props.node);
+        }
+
         return (
             <tr>
                 <td>{this.props.node.properties.id}</td>
-                <td>{this.props.node.geometry.coordinates}</td>
+                <td>{this.props.node.geometry.coordinates[0]},
+                    {this.props.node.geometry.coordinates[1]}</td>
                 <td>{this.props.node.properties.description}</td>
           		<td>
                     <Button variant="primary" onClick={editNode}>
                         <i className="fas fa-edit"></i> 
                     </Button>
-                    <Button variant="danger" >
+                    <Button variant="danger" onClick={deleteNode}>
                         <i className="fas fa-times"></i>
                     </Button>
                 </td>

@@ -3,7 +3,7 @@ import './Menu.css';
 import AddNode from './AddNode'
 import ShowInfo from './ShowInfo'
 import RefreshHome from './RefreshHome'
-import {addNode} from '../redux/reducers/markers'
+import {addNode, deleteNode} from '../redux/reducers/markers'
 
 
 class Menu extends React.Component {
@@ -17,18 +17,24 @@ class Menu extends React.Component {
         
         this.handleClick = this.handleClick.bind(this);
         this.dispatchSubmit = this.dispatchSubmit.bind(this);
+        this.dispatchDelete = this.dispatchDelete.bind(this);
       }
 
     dispatchSubmit(object){
-      this.props.dispatchSubmit(addNode(object));
+      this.props.dispatch(addNode(object));
     }
 
-      handleClick() {
-        this.setState(prevState => ({
-          isToggleOn: !prevState.isToggleOn,
-          display: prevState.isToggleOn ? 'none': 'block'
-        }));
-      }
+    dispatchDelete(nodeID){
+      this.props.dispatch(deleteNode(nodeID));
+    }
+
+    handleClick() {
+      this.setState(prevState => ({
+        isToggleOn: !prevState.isToggleOn,
+        display: prevState.isToggleOn ? 'none': 'block'
+      }));
+    }
+
   render(){   
       return(
         <div>
@@ -49,6 +55,7 @@ class Menu extends React.Component {
                 <li>
                   <AddNode
                     dispatchSubmit={this.dispatchSubmit}
+                    dispatchDelete={this.dispatchDelete}
                     handleClick={this.handleClick}
                     markers={this.props.markers}
                   />
