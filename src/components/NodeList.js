@@ -5,11 +5,16 @@ class NodeList extends React.Component {
 
     render(){
 
+        const handleEdit = (node) => {
+            this.props.handleEdit(node);
+        }
+
         const createNodeListItem = (node, i) => {
             return(
                 <Node
                     key = {i}
                     node = {node}
+                    handleEdit = {handleEdit}
                 />
                     
             )

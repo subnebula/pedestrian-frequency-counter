@@ -12,8 +12,10 @@ class AddNode extends React.Component {
         this.handleCancel = this.handleCancel.bind(this);
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleEdit = this.handleEdit.bind(this);
     
         this.state = {
+            activeKey: "add",
             show: false,
             devid: '',
             lat: '',
@@ -53,6 +55,16 @@ class AddNode extends React.Component {
             street: ''
         });
     }
+
+    handleEdit(node) {
+        this.setState({ 
+            activeKey: "add",
+            devid: node.properties.id,
+            lat: node.geometry.coordinates[0],
+            lng: node.geometry.coordinates[1],
+            street: node.properties.description
+        });
+    }
     
     handleShow() {
         this.setState(prevState => ({ 
@@ -74,7 +86,7 @@ class AddNode extends React.Component {
                         <Modal.Title>Nodes</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        <Tabs defaultActiveKey="add" transition={false} id="noanim-tab-example">
+                        <Tabs defaultActiveKey="add" activeKey={this.state.activeKey} onSelect={activeKey => this.setState({ activeKey })}>
                             <Tab eventKey="add" title="Add a Node">
                                 <AddNodeForm 
                                     handleInputChange={this.handleInputChange}
@@ -83,11 +95,14 @@ class AddNode extends React.Component {
                                     devid={this.state.devid}
                                     lat={this.state.lat}
                                     lng={this.state.lng}
-                                    street={this.state.street}/>
+                                    street={this.state.street}
+                                />
                             </Tab>
                             <Tab eventKey="view" title="View All Nodes">
                                 <NodeList
-                                    markers={this.props.markers}/>
+                                    markers={this.props.markers}
+                                    handleEdit={this.handleEdit}
+                                />
                             </Tab>
                         </Tabs>
                         

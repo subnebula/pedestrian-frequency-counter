@@ -5,13 +5,17 @@ class Node extends React.Component {
 
     render() {
 
+        const editNode = () => {
+            this.props.handleEdit(this.props.node);
+        }
+
         return (
             <tr>
                 <td>{this.props.node.properties.id}</td>
                 <td>{this.props.node.geometry.coordinates}</td>
                 <td>{this.props.node.properties.description}</td>
           		<td>
-                    <Button variant="primary" >
+                    <Button variant="primary" onClick={editNode}>
                         <i className="fas fa-edit"></i> 
                     </Button>
                     <Button variant="danger" >
