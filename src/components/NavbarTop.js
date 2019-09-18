@@ -2,6 +2,7 @@ import React from 'react';
 import {Navbar,Nav} from 'react-bootstrap';
 import Menu from './Menu';
 import { connect } from 'react-redux'
+import Calendar from './Calendar';
 
 
 class NavbarTop extends React.Component {
@@ -25,7 +26,14 @@ class NavbarTop extends React.Component {
                     <h2>Bendigo Monitoring System</h2>     
                 </Navbar.Text>
                 </Navbar.Collapse>
-                
+                <Nav>
+                    <Nav.Item >
+                        <Calendar
+
+                        />   
+                    </Nav.Item>   
+                     
+                </Nav>
             </Navbar>
         </>
         )
