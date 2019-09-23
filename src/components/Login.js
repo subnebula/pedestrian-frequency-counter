@@ -1,43 +1,48 @@
 import React from 'react';
+import{Input, Button} from 'react-bootstrap'
 
 class Login extends React.Component {
-  
+ 
   constructor(props){
     super(props);
     this.state = {
-    userName: "",
+     userName: "",
         userPassword: "",
+		loginState:true
     };
-		this.handleShow = this.handleShow.bind(this);
 
-	}
-	handleShow() {
-    this.setState(prevState => ({ 
-        show: !prevState.show 
-    }))
-    this.props.handleClick();
-}
+this.handleSubmit = this.handleSubmit.bind(this);
+//this.handleShow = this.handleShow.bind(this);
+  }
+ 
+  handleSubmit(){
+  window.location.reload(false);
+  this.state({loginState: false});
+  }
+ 
+  /*handleShow(){
+  this.setState(prevState =>({show: !prevState.show}))
+  this.props.handleClick();
+  }*/
 
     render() {
+
         return(
-
-<div className="container" id="login">
+ <div className="container" id="login">
           <form id="login-form">
- 
- <div className="form-group">
-<label>UserName</label>
-<input type="text" className="form-control" placeholder="ID" ref="account" required/>
+   <div className="form-group">
+  <label>User Name</label>
+  <input type="text" className="form-control" placeholder="userName" ref="account" required/>
           </div>
- <div className="form-group">
-<label>Password</label>
-<input  type="password" className="form-control" placeholder="PW" ref="pwd" required/>
+   <div className="form-group">
+  <label>Password</label>
+  <input  type="password" className="form-control" placeholder="Password" ref="pwd" required/>
+   </div>
+   <button type="submit" onClick={this.handleSubmit} value="login">Submit</button>
+  
+ </form>
  </div>
- <button type="submit" onClick={()=>{this.props.history.push("/Home");
-            }} value="login">Submit</button>
-</form>
-</div>
-
-)
+ )
 }
          
 }
