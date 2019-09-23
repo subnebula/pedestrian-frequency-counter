@@ -2,7 +2,7 @@ html, body{ margin: 0; padding: 0;  }
 
 /*Menu toggle button*/
 #menu-btn{ 
-  border: 1.5px solid rgb(156, 156, 156);
+
   position: static;
   font-size:large;
   width: 3em;
