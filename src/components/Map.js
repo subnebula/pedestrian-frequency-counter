@@ -14,24 +14,38 @@ var popup = new mapboxgl.Popup({
   closeButton: false,
   closeOnClick: false,
   anchor: "top-left"
-  });
+});
+
+const gradient = [
+  "#8e00e5",
+  "#7c0ae0",
+  "#6a15db",
+  "#581fd6",
+  "#472ad2",
+  "#3535cd",
+  "#233fc8",
+  "#114ac3",
+  "#0055bf"
+]
 
 const key = {
   name: "Pedestrians",
   description: "Number of pedestrians that have passed a point today",
   property: "ped_est",
   stops: [
-    [0, "#f8d5cb"],
-    [10, "#f5b9bb"],
-    [20, "#f3a7bc"],
-    [30, "#f195c4"],
-    [40, "#ef83d5"],
-    [50, "#ec72ec"],
-    [60, "#c691ea"],
-    [70, "#9f50e8"],
-    ["80+", "#6e40e6"]
+    [0, gradient[0]],
+    [10, gradient[1]],
+    [20, gradient[2]],
+    [30, gradient[3]],
+    [40, gradient[4]],
+    [50, gradient[5]],
+    [60, gradient[6]],
+    [70, gradient[7]],
+    ["80+", gradient[8]]
   ]
 }
+
+
 
 
 // Defines Map component
@@ -79,15 +93,15 @@ class Map extends React.Component {
             "interpolate",
             ["linear"],
             ["heatmap-density"],
-            0, "rgba(248,213,204,0)",
-            0.1, "#f4bfb6",
-            0.2, "#f1a8a5",
-            0.3, "#ee8f9a",
-            0.4, "#ec739b",
-            0.5, "#dd5ca8",
-            0.6, "#c44cc0",
-            0.7, "#9f43d7",
-            0.8, "#6e40e6"
+            0, "rgba(142, 0, 229,0)",
+            0.1, gradient[1],
+            0.2, gradient[2],
+            0.3, gradient[3],
+            0.4, gradient[4],
+            0.5, gradient[5],
+            0.6, gradient[6],
+            0.7, gradient[7],
+            0.8, gradient[8]
           ],
           "heatmap-weight": {
             property: "total",
@@ -139,15 +153,15 @@ class Map extends React.Component {
           "circle-color": {
             property: "total",
             stops: [
-              [0, "#f8d5cb"],
-              [10, "#f5b9bb"],
-              [20, "#f3a7bc"],
-              [30, "#f195c4"],
-              [40, "#ef83d5"],
-              [50, "#ec72ec"],
-              [60, "#c691ea"],
-              [70, "#9f50e8"],
-              [80, "#6e40e6"]
+              [0, gradient[0]],
+              [10, gradient[1]],
+              [20, gradient[2]],
+              [30, gradient[3]],
+              [40, gradient[4]],
+              [50, gradient[5]],
+              [60, gradient[6]],
+              [70, gradient[7]],
+              [80, gradient[8]]
             ]
           },
           "circle-radius": {
