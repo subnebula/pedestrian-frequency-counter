@@ -1,27 +1,27 @@
 import React from 'react';
-import{Input, Button} from 'react-bootstrap'
+
 
 
 class Login extends React.Component {
  
   constructor(props){
     super(props);
+    this.handleSubmit = this.handleSubmit.bind(this);
     this.state = {
      userName: "",
         userPassword: "",
-<<<<<<< HEAD
- loginState:true
-=======
-		loginState:true
->>>>>>> d8bdaaf49f7586ccb8308cb879f3e2acfce3bfcf
+        
+    loginState:true
+    
+
     };
 
-this.handleSubmit = this.handleSubmit.bind(this);
+//this.handleSubmit = this.handleSubmit.bind(this);
 //this.handleShow = this.handleShow.bind(this);
   }
  
   handleSubmit(){
-  window.location.reload(false);
+  //window.location.reload(false);
   this.state({loginState: false});
   }
  
@@ -44,11 +44,7 @@ this.handleSubmit = this.handleSubmit.bind(this);
   <input  type="password" className="form-control" placeholder="Password" ref="pwd" required/>
    </div>
    <button type="submit" onClick={this.handleSubmit} value="login">Submit</button>
-<<<<<<< HEAD
- 
-=======
   
->>>>>>> d8bdaaf49f7586ccb8308cb879f3e2acfce3bfcf
  </form>
  </div>
  )

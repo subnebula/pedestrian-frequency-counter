@@ -50,9 +50,12 @@ class Menu extends React.Component {
                       dispatchSubmit={this.dispatchSubmit}
                       handleClick={this.handleClick}
                       markers={this.props.markers}
+                      //hide={this.props.hide}
                     />
                 </li>
-                <li>Log In<Login/>
+                <li>Log In<Login
+                      handleSubmit={this.handleSubmit}
+                />
                 
                 </li>
 

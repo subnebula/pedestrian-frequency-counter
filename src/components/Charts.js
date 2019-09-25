@@ -41,8 +41,13 @@ class Charts extends React.Component {
         },
         xaxis: {
           categories: ['9', '10', '11', '12', '13', '14', '15','16'],
+          style:{
+            colors:['#FFFFFF'],
+            
           title: {
-            text: 'Time'
+            text: 'Time',
+          }
+
           }
         },
         yaxis: {
