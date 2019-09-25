@@ -12,13 +12,17 @@ class AddNode extends React.Component {
         this.handleCancel = this.handleCancel.bind(this);
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleEdit = this.handleEdit.bind(this);
+        this.handleDelete = this.handleDelete.bind(this);
     
         this.state = {
+            activeKey: "add",
             show: false,
             devid: '',
             lat: '',
             lng: '',
-            street: ''
+            street: '',
+            edit: false
         };
     }
 
@@ -33,14 +37,28 @@ class AddNode extends React.Component {
     }
 
     handleSubmit(event) {
-        this.props.dispatchSubmit(
-            {
-                devid: this.state.devid,
-                lat: this.state.lat,
-                lng: this.state.lng,
-                street: this.state.street
-            });
-        this.setState({ show: false });
+        if(this.state.edit){
+            this.props.dispatchEdit(
+                {
+                    devid: this.state.devid,
+                    lat: this.state.lat,
+                    lng: this.state.lng,
+                    street: this.state.street
+                }
+            );
+            this.setState({ edit: false });
+        } else {
+            this.props.dispatchSubmit(
+                {
+                    devid: this.state.devid,
+                    lat: this.state.lat,
+                    lng: this.state.lng,
+                    street: this.state.street
+                }
+            );
+        }
+        
+        this.handleCancel();
         event.preventDefault();
     }
     
@@ -53,7 +71,21 @@ class AddNode extends React.Component {
             street: ''
         });
     }
+
+    handleEdit(node) {
+        this.setState({ 
+            activeKey: "add",
+            edit: true,
+            devid: node.properties.id,
+            lat: node.geometry.coordinates[1],
+            lng: node.geometry.coordinates[0],
+            street: node.properties.description
+        });
+    }
     
+    handleDelete(node) {
+        this.props.dispatchDelete(node.properties.id)
+    }
     handleShow() {
         this.setState(prevState => ({ 
             show: !prevState.show 
@@ -65,16 +97,16 @@ class AddNode extends React.Component {
         
         return (
             <>
-                <a href={this.handleShow} onClick={this.handleShow} >
+                <a onClick={this.handleShow} >
                     Nodes
                 </a>
 
-                <Modal show={this.state.show} onHide={this.handleCancel}>
+                <Modal show={this.state.show} onHide={this.handleCancel} size="lg"> 
                     <Modal.Header closeButton>
                         <Modal.Title>Nodes</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        <Tabs defaultActiveKey="add" transition={false} id="noanim-tab-example">
+                        <Tabs defaultActiveKey="add" activeKey={this.state.activeKey} onSelect={activeKey => this.setState({ activeKey })}>
                             <Tab eventKey="add" title="Add a Node">
                                 <AddNodeForm 
                                     handleInputChange={this.handleInputChange}
@@ -83,11 +115,15 @@ class AddNode extends React.Component {
                                     devid={this.state.devid}
                                     lat={this.state.lat}
                                     lng={this.state.lng}
-                                    street={this.state.street}/>
+                                    street={this.state.street}
+                                />
                             </Tab>
                             <Tab eventKey="view" title="View All Nodes">
                                 <NodeList
-                                    markers={this.props.markers}/>
+                                    markers={this.props.markers}
+                                    handleEdit={this.handleEdit}
+                                    handleDelete={this.handleDelete}
+                                />
                             </Tab>
                         </Tabs>
                         

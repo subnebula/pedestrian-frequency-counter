@@ -1,7 +1,9 @@
 import React from 'react';
 import './Menu.css';
 import AddNode from './AddNode'
-import {addNode} from '../redux/reducers/markers'
+import ShowInfo from './ShowInfo'
+import RefreshHome from './RefreshHome'
+import {addNode, editNode, deleteNode} from '../redux/reducers/markers'
 
 
 class Menu extends React.Component {
@@ -15,32 +17,54 @@ class Menu extends React.Component {
         
         this.handleClick = this.handleClick.bind(this);
         this.dispatchSubmit = this.dispatchSubmit.bind(this);
+        this.dispatchEdit = this.dispatchEdit.bind(this);
+        this.dispatchDelete = this.dispatchDelete.bind(this);
       }
 
     dispatchSubmit(object){
-      this.props.dispatchSubmit(addNode(object));
+      this.props.dispatch(addNode(object));
     }
 
-      handleClick() {
-        this.setState(prevState => ({
-          isToggleOn: !prevState.isToggleOn,
-          display: prevState.isToggleOn ? 'none': 'block'
-        }));
-      }
+    dispatchEdit(object){
+      this.props.dispatch(editNode(object));
+    }
+
+    dispatchDelete(nodeID){
+      this.props.dispatch(deleteNode(nodeID));
+    }
+
+    handleClick() {
+      this.setState(prevState => ({
+        isToggleOn: !prevState.isToggleOn,
+        display: prevState.isToggleOn ? 'none': 'block'
+      }));
+    }
+
   render(){   
       return(
         <div>
           <div id="menu-btn"><i className="fas fa-bars" onClick={this.handleClick}></i></div>
           <nav id="menu"style={{display: this.state.display}}>
             <ul>
-                <li>Home</li>
-                <li>System Info</li>
+                <li>
+                  <RefreshHome
+                    handleClick={this.handleClick}
+                  />
+                </li>
+                <li>
+                  <ShowInfo
+                    handleClick={this.handleClick}
+                  />
+                </li>
                 <li>LogIn</li>
-                <li><AddNode
-                      dispatchSubmit={this.dispatchSubmit}
-                      handleClick={this.handleClick}
-                      markers={this.props.markers}
-                    />
+                <li>
+                  <AddNode
+                    dispatchSubmit={this.dispatchSubmit}
+                    dispatchDelete={this.dispatchDelete}
+                    dispatchEdit={this.dispatchEdit}
+                    handleClick={this.handleClick}
+                    markers={this.props.markers}
+                  />
                 </li>
             </ul>
           </nav>

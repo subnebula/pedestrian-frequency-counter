@@ -151,15 +151,15 @@ class Map extends React.Component {
             ]
           },
           "circle-radius": {
-            "base": 1.75,
+            "base": 1.75, //base radius
             "stops": [
-              [11, 1], 
-              [16, 13]]
+              [11, 1], //radius at 11 zoom
+              [16, 13]] // radius at 16 zoom
           },
           "circle-opacity": {
             stops: [
-              [14, 0],
-              [15, 1]
+              [14, 0], //hide circles at 14 zoom
+              [15, 1] //show circles at 15 zoom, fade in and out in between these values
             ]
           }
         }

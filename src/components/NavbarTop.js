@@ -14,7 +14,7 @@ class NavbarTop extends React.Component {
             <Nav >
                     <Nav.Item>
                         <Menu
-                            dispatchSubmit={this.props.dispatch}
+                            dispatch={this.props.dispatch}
                             markers={this.props.markers}
                         />   
                     </Nav.Item>                           

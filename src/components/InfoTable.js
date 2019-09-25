@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import InfoTableRow from './InfoTableRow';
 import {hideTable} from '../redux/reducers/TableData'
+import Charts from './Charts';
 
 class InfoTable extends React.Component {
 
@@ -30,6 +31,13 @@ class InfoTable extends React.Component {
 
                             <i className="fas fa-times"/>
                         </button> 
+                    </div>
+                    <div> 
+                        <Charts 
+                            location={this.props.location}
+                            graph={this.props.graph}
+                            data={this.props.data}
+                        />
                     </div>
                     <div className='overflow-auto mr3 ml3 px0 py0 hmax300'>
                         <table className='table'>
