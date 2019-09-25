@@ -27,7 +27,7 @@ class ShowInfo extends React.Component {
       render() {
         return (
           <>
-             <a href={this.handleShow} onClick={this.handleShow} >
+             <a onClick={this.handleShow} >
              System Info
              </a>
              <Modal show={this.state.show} onHide={this.handleCancel}>

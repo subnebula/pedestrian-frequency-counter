@@ -3,7 +3,7 @@ import './Menu.css';
 import AddNode from './AddNode'
 import ShowInfo from './ShowInfo'
 import RefreshHome from './RefreshHome'
-import {addNode, deleteNode} from '../redux/reducers/markers'
+import {addNode, editNode, deleteNode} from '../redux/reducers/markers'
 
 
 class Menu extends React.Component {
@@ -17,11 +17,16 @@ class Menu extends React.Component {
         
         this.handleClick = this.handleClick.bind(this);
         this.dispatchSubmit = this.dispatchSubmit.bind(this);
+        this.dispatchEdit = this.dispatchEdit.bind(this);
         this.dispatchDelete = this.dispatchDelete.bind(this);
       }
 
     dispatchSubmit(object){
       this.props.dispatch(addNode(object));
+    }
+
+    dispatchEdit(object){
+      this.props.dispatch(editNode(object));
     }
 
     dispatchDelete(nodeID){
@@ -56,6 +61,7 @@ class Menu extends React.Component {
                   <AddNode
                     dispatchSubmit={this.dispatchSubmit}
                     dispatchDelete={this.dispatchDelete}
+                    dispatchEdit={this.dispatchEdit}
                     handleClick={this.handleClick}
                     markers={this.props.markers}
                   />

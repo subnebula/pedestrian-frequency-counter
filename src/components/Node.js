@@ -16,8 +16,8 @@ class Node extends React.Component {
         return (
             <tr>
                 <td>{this.props.node.properties.id}</td>
-                <td>{this.props.node.geometry.coordinates[0]},
-                    {this.props.node.geometry.coordinates[1]}</td>
+                <td>{this.props.node.geometry.coordinates[1]},
+                    {this.props.node.geometry.coordinates[0]}</td>
                 <td>{this.props.node.properties.description}</td>
           		<td>
                     <Button variant="primary" onClick={editNode}>

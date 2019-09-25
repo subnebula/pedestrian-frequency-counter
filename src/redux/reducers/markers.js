@@ -1,6 +1,7 @@
 import axios from 'axios'
 const LOAD_MARKERS = 'LOAD_MARKERS';
-const ADD_NODE = 'ADD_NODE'
+const ADD_NODE = "ADD_NODE"
+const EDIT_NODE = "EDIT_NODE"
 const DELETE_NODE = "DELETE_NODE"
 
 const initialState = {
@@ -68,6 +69,9 @@ export default function reducer(state = initialState, action) {
       window.location.reload();
       return state;
 
+    case EDIT_NODE:
+      loadMarkers();
+
     default:
       return state;
     }    
@@ -100,6 +104,23 @@ export function addNode(node) {
       console.log(error);
       dispatch({
         type: ADD_NODE,
+        error: error
+      })
+    });
+  }
+}
+
+export function editNode(node) {
+  return (dispatch) => {
+    axios.put('/sensor-nodes/' + node.devid, node)
+    .then(response => {
+      console.log(response);
+      dispatch({type: EDIT_NODE, node: node});
+    })
+    .catch(error => {
+      console.log(error);
+      dispatch({
+        type: EDIT_NODE,
         error: error
       })
     });

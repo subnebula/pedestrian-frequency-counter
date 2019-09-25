@@ -12,7 +12,7 @@ class RefreshHome extends React.Component {
     
     render() {
         return(
-          <a href={this.handClick} onClick={this.handClick} >
+          <a onClick={this.handClick} >
             Home
           </a>
         )

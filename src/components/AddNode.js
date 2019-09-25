@@ -21,7 +21,8 @@ class AddNode extends React.Component {
             devid: '',
             lat: '',
             lng: '',
-            street: ''
+            street: '',
+            edit: false
         };
     }
 
@@ -36,14 +37,28 @@ class AddNode extends React.Component {
     }
 
     handleSubmit(event) {
-        this.props.dispatchSubmit(
-            {
-                devid: this.state.devid,
-                lat: this.state.lat,
-                lng: this.state.lng,
-                street: this.state.street
-            });
-        this.setState({ show: false });
+        if(this.state.edit){
+            this.props.dispatchEdit(
+                {
+                    devid: this.state.devid,
+                    lat: this.state.lat,
+                    lng: this.state.lng,
+                    street: this.state.street
+                }
+            );
+            this.setState({ edit: false });
+        } else {
+            this.props.dispatchSubmit(
+                {
+                    devid: this.state.devid,
+                    lat: this.state.lat,
+                    lng: this.state.lng,
+                    street: this.state.street
+                }
+            );
+        }
+        
+        this.handleCancel();
         event.preventDefault();
     }
     
@@ -60,9 +75,10 @@ class AddNode extends React.Component {
     handleEdit(node) {
         this.setState({ 
             activeKey: "add",
+            edit: true,
             devid: node.properties.id,
-            lat: node.geometry.coordinates[0],
-            lng: node.geometry.coordinates[1],
+            lat: node.geometry.coordinates[1],
+            lng: node.geometry.coordinates[0],
             street: node.properties.description
         });
     }
@@ -81,7 +97,7 @@ class AddNode extends React.Component {
         
         return (
             <>
-                <a href={this.handleShow} onClick={this.handleShow} >
+                <a onClick={this.handleShow} >
                     Nodes
                 </a>
 
