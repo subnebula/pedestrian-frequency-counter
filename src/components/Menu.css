@@ -2,9 +2,11 @@ html, body{ margin: 0; padding: 0;  }
 
 /*Menu toggle button*/
 #menu-btn{ 
+
+  position: static;
   font-size:large;
-  width: 1.5em;
-  padding: 1.5em;
+  width: 3em;
+  padding: 1em;
   transition: all .2s ease-out;
 }
   /*Cursor on toggle button hover*/
@@ -40,8 +42,8 @@ html, body{ margin: 0; padding: 0;  }
       /*Cursor and text undelrine on hover*/
       #menu ul li:hover{
         cursor: pointer;
-        
-        
+        font-weight:bold;
+        text-decoration: underline;
       }
       /*text colour change on click*/
       #menu ul li:active{

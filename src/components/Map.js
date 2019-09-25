@@ -45,7 +45,7 @@ class Map extends React.Component {
     //create a new map object, centers it and sets default zoom
     this.map = new mapboxgl.Map({
       container: this.mapContainer,
-      style: "mapbox://styles/mapbox/light-v10",
+      style: "mapbox://styles/mapbox/dark-v10",
       sprite: "mapbox://sprites/mapbox/bright-v9",
       center: [144.279283,-36.757203],
       logoPosition: "top-right",
