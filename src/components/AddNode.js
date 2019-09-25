@@ -97,9 +97,9 @@ class AddNode extends React.Component {
         
         return (
             <>
-                <a onClick={this.handleShow} >
+                <button onClick={this.handleShow} >
                     Nodes
-                </a>
+                </button>
 
                 <Modal show={this.state.show} onHide={this.handleCancel} size="lg"> 
                     <Modal.Header closeButton>

@@ -12,9 +12,9 @@ class RefreshHome extends React.Component {
     
     render() {
         return(
-          <a onClick={this.handClick} >
+          <button onClick={this.handClick} >
             Home
-          </a>
+          </button>
         )
     }
 }

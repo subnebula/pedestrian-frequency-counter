@@ -71,7 +71,7 @@ export default function reducer(state = initialState, action) {
 
     case EDIT_NODE:
       loadMarkers();
-
+      break;
     default:
       return state;
     }    
