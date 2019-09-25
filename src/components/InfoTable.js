@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import InfoTableRow from './InfoTableRow';
 import {hideTable} from '../redux/reducers/TableData'
 import Charts from './Charts';
+import Calendar from './Calendar';
 
 class InfoTable extends React.Component {
 
@@ -32,6 +33,9 @@ class InfoTable extends React.Component {
                             <i className="fas fa-times"/>
                         </button> 
                     </div>
+                    <div>
+                        <Calendar/>
+                     </div>
                     <div> 
                         <Charts 
                             location={this.props.location}
