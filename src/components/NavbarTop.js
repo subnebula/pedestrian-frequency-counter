@@ -11,7 +11,7 @@ class NavbarTop extends React.Component {
     
         return (
             <>
-            <Navbar bg="primary" expand="sm"  >
+            <Navbar className="bg-dark hmax60"  >
             <Nav>
                     <Nav.Item >
                         <Menu
@@ -22,7 +22,7 @@ class NavbarTop extends React.Component {
                      
                 </Nav>
                 <Navbar.Collapse className='justify-content-center'>
-                <Navbar.Text >             
+                <Navbar.Text className="text-white">          
                     <h2>Bendigo Monitoring System</h2>     
                 </Navbar.Text>
                 </Navbar.Collapse>

@@ -68,7 +68,9 @@ class Menu extends React.Component {
                     markers={this.props.markers}
                   />
                 </li>
-                <li>Log In<Login/>
+                <li>Log In<Login
+                      handleSubmit={this.handleSubmit}
+                />
                 
                 </li>
 

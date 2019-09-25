@@ -219,8 +219,8 @@ class Map extends React.Component {
     const renderLegendKeys = (stop, i) => {
       return (
         <div key={i} className="txt-s">
-          <span className="mr6 round-full w12 h12 inline-block align-middle" style={{ backgroundColor: stop[1] }} />
-          <span>{`${stop[0].toLocaleString()}`}</span>
+          <span className="mr6 round-full w12 h12 inline-block align-middle " style={{ backgroundColor: stop[1] }} />
+          <span className= " text-white">{`${stop[0].toLocaleString()}`}</span>
         </div>
       );
     }
@@ -233,9 +233,9 @@ class Map extends React.Component {
       return (
         <div>
           <div className="absolute top right left bottom mt60" ref={el => this.mapContainer = el}/>
-          <div className="card absolute bottom left shadow z1">
+          <div className="card absolute bottom left shadow z1" style={{backgroundColor: "#585e6e"}}>
             <div className="card-body">
-              <h2 className="card-text txt-s block">{key.name}</h2>
+              <h2 className="card-text txt-s block text-white">{key.name}</h2>
             
             {key.stops.map(renderLegendKeys)}
             </div>
