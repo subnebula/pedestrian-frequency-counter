@@ -2,7 +2,7 @@
  "nodes": {
   "node-red": {
    "name": "node-red",
-   "version": "0.20.5",
+   "version": "0.20.8",
    "local": false,
    "nodes": {
     "inject": {
@@ -364,7 +364,7 @@
   },
   "node-red-node-random": {
    "name": "node-red-node-random",
-   "version": "0.1.2",
+   "version": "0.1.3",
    "local": false,
    "nodes": {
     "random": {
@@ -428,7 +428,7 @@
   },
   "node-red-node-email": {
    "name": "node-red-node-email",
-   "version": "1.3.0",
+   "version": "1.6.3",
    "local": false,
    "nodes": {
     "email": {
@@ -497,7 +497,7 @@
   },
   "node-red-node-rbe": {
    "name": "node-red-node-rbe",
-   "version": "0.2.4",
+   "version": "0.2.5",
    "local": false,
    "nodes": {
     "rbe": {
@@ -514,7 +514,7 @@
   },
   "node-red-node-sentiment": {
    "name": "node-red-node-sentiment",
-   "version": "0.1.3",
+   "version": "0.1.4",
    "local": false,
    "nodes": {
     "sentiment": {
@@ -565,7 +565,7 @@
   },
   "node-red-node-twitter": {
    "name": "node-red-node-twitter",
-   "version": "1.1.4",
+   "version": "1.1.5",
    "local": false,
    "nodes": {
     "twitter": {
@@ -631,7 +631,7 @@
      "view-show-grid": true
     }
    },
-   "menu-menu-item-sidebar": false
+   "menu-menu-item-sidebar": true
   },
   "admin": {
    "editor": {
