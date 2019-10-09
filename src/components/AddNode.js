@@ -98,7 +98,7 @@ class AddNode extends React.Component {
         return (
             <>
                 <button onClick={this.handleShow} >
-                    Nodes
+                    Sensors
                 </button>
 
                 <Modal show={this.state.show} onHide={this.handleCancel} size="lg"> 
@@ -107,7 +107,7 @@ class AddNode extends React.Component {
                     </Modal.Header>
                     <Modal.Body>
                         <Tabs defaultActiveKey="add" activeKey={this.state.activeKey} onSelect={activeKey => this.setState({ activeKey })}>
-                            <Tab eventKey="add" title="Add a Node">
+                            <Tab eventKey="add" title="Add a Sensor">
                                 <AddNodeForm 
                                     handleInputChange={this.handleInputChange}
                                     handleCancel={this.handleCancel}
@@ -118,7 +118,7 @@ class AddNode extends React.Component {
                                     street={this.state.street}
                                 />
                             </Tab>
-                            <Tab eventKey="view" title="View All Nodes">
+                            <Tab eventKey="view" title="View All Sensors">
                                 <NodeList
                                     markers={this.props.markers}
                                     handleEdit={this.handleEdit}
