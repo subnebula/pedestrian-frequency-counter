@@ -1,15 +1,28 @@
 
 version: "3"
 services:
+  nginx:
+    build: nginx
+    ports:
+      - "80:80"
+    links:
+      - api
+      - frontend
+    depends_on:
+      - api
+      - frontend
   api:
     build: api
-    ports:
-      - "1880:1880"
     volumes:
       - "./api/data:/data"
     links:
       - db
-    
+  frontend:
+    build: frontend
+    volumes: 
+      - "./frontend:/app"
+    links:
+      - api
   db:
     image: tutum/mysql:5.6
     environment:

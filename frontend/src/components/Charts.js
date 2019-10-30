@@ -60,9 +60,9 @@ class Charts extends React.Component {
         legend: {
           position: 'top',
           horizontalAlign: 'right',
-          floating: true,
-          offsetY: -25,
-          offsetX: -5
+          //floating: true,
+          //offsetY: -25,
+          //offsetX: -5
         }
       },
       series: [
@@ -86,7 +86,7 @@ class Charts extends React.Component {
     }
   }
 
-  componentWillReceiveProps(props) {
+  UNSAFE_componentWillReceiveProps(props) {
     const data = this.props.data;
     if (props.data !== data) {
       this.setState((state, props) => {
@@ -121,7 +121,7 @@ class Charts extends React.Component {
             series={this.state.series} 
             type="line" 
             height="250"
-            width="250" 
+            width="300" 
           />
         </div>
     );

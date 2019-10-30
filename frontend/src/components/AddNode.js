@@ -94,43 +94,48 @@ class AddNode extends React.Component {
     }
     
     render() {
-        
-        return (
-            <>
-                <button onClick={this.handleShow} >
-                    Sensors
-                </button>
 
-                <Modal show={this.state.show} onHide={this.handleCancel} size="lg"> 
-                    <Modal.Header closeButton>
-                        <Modal.Title>Nodes</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body>
-                        <Tabs defaultActiveKey="add" activeKey={this.state.activeKey} onSelect={activeKey => this.setState({ activeKey })}>
-                            <Tab eventKey="add" title="Add a Sensor">
-                                <AddNodeForm 
-                                    handleInputChange={this.handleInputChange}
-                                    handleCancel={this.handleCancel}
-                                    handleSubmit={this.handleSubmit}
-                                    devid={this.state.devid}
-                                    lat={this.state.lat}
-                                    lng={this.state.lng}
-                                    street={this.state.street}
-                                />
-                            </Tab>
-                            <Tab eventKey="view" title="View All Sensors">
-                                <NodeList
-                                    markers={this.props.markers}
-                                    handleEdit={this.handleEdit}
-                                    handleDelete={this.handleDelete}
-                                />
-                            </Tab>
-                        </Tabs>
-                        
-                    </Modal.Body>
-                </Modal>
-            </>
-        );
+        if (this.props.isLoggedIn){        
+            return (
+                <>
+                    <button onClick={this.handleShow} >
+                        Sensors
+                    </button>
+
+                    <Modal show={this.state.show} onHide={this.handleCancel} size="lg"> 
+                        <Modal.Header closeButton>
+                            <Modal.Title>Sensors</Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body>
+                            <Tabs defaultActiveKey="add" activeKey={this.state.activeKey} onSelect={activeKey => this.setState({ activeKey })}>
+                                <Tab eventKey="add" title="Add a Sensor">
+                                    <AddNodeForm 
+                                        handleInputChange={this.handleInputChange}
+                                        handleCancel={this.handleCancel}
+                                        handleSubmit={this.handleSubmit}
+                                        devid={this.state.devid}
+                                        lat={this.state.lat}
+                                        lng={this.state.lng}
+                                        street={this.state.street}
+                                        edit={this.state.edit}
+                                    />
+                                </Tab>
+                                <Tab eventKey="view" title="View All Sensors">
+                                    <NodeList
+                                        markers={this.props.markers}
+                                        handleEdit={this.handleEdit}
+                                        handleDelete={this.handleDelete}
+                                    />
+                                </Tab>
+                            </Tabs>
+                            
+                        </Modal.Body>
+                    </Modal>
+                </>
+            );
+        } else {
+            return null;
+        }
     }
 }
 

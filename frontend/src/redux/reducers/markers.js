@@ -70,8 +70,22 @@ export default function reducer(state = initialState, action) {
       return state;
 
     case EDIT_NODE:
-      loadMarkers();
-      break;
+      if(action.error) {
+        alert(action.error);
+        return state;
+      }
+      window.location.reload();
+      return state;
+
+    case DELETE_NODE:
+        if(action.error) {
+          alert(action.error);
+          return state;
+        }
+        alert("Deleted Successfully");
+        window.location.reload();
+        return state;
+      
     default:
       return state;
     }    
@@ -79,7 +93,27 @@ export default function reducer(state = initialState, action) {
 
 export function loadMarkers() {
   return (dispatch) => {
-    axios.get('/sensor-nodes')
+    axios.get('/api/sensor-nodes')
+    .then(response => {
+      dispatch({
+        type: LOAD_MARKERS,
+        data: response.data
+      })
+    })
+    .catch(error => {
+      console.log(error);
+      
+    });
+  }
+}
+
+export function loadMarkersByDate(date) {
+
+  // Date is formatted to YYYY-mm-dd, this is what the api expects
+  var formattedDate = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate()
+  
+  return (dispatch) => {
+    axios.get('/api/sensor-nodes/' + formattedDate)
     .then(response => {
       dispatch({
         type: LOAD_MARKERS,
@@ -95,9 +129,8 @@ export function loadMarkers() {
 
 export function addNode(node) {
   return (dispatch) => {
-    axios.post('/sensor-nodes', node)
+    axios.post('/api/sensor-nodes', node)
     .then(response => {
-      console.log(response);
       dispatch({type: ADD_NODE, node: node});
     })
     .catch(error => {
@@ -112,9 +145,8 @@ export function addNode(node) {
 
 export function editNode(node) {
   return (dispatch) => {
-    axios.put('/sensor-nodes/' + node.devid, node)
+    axios.put('/api/sensor-nodes/' + node.devid, node)
     .then(response => {
-      console.log(response);
       dispatch({type: EDIT_NODE, node: node});
     })
     .catch(error => {
@@ -129,9 +161,8 @@ export function editNode(node) {
 
 export function deleteNode(nodeID) {
   return (dispatch) => {
-    axios.delete('/sensor-nodes/' + nodeID)
+    axios.delete('/api/sensor-nodes/' + nodeID)
     .then(response => {
-      console.log(response);
       dispatch({type: DELETE_NODE, node: nodeID});
     })
     .catch(error => {

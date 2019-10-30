@@ -23,7 +23,7 @@ class NavbarTop extends React.Component {
                 </Nav>
                 <Navbar.Collapse className='justify-content-center'>
                 <Navbar.Text className="text-white">          
-                    <h2>Bendigo Monitoring System</h2>     
+                    <h2>Bendigo Pedestrian Counter</h2>     
                 </Navbar.Text>
                 </Navbar.Collapse>
                 <Nav>

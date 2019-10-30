@@ -5,7 +5,7 @@ const HIDE_TABLE = 'HIDE_TABLE';
 const initialState = {
     visible: false,
     location: null,
-    data: [
+    data: [ //get rid of data for final build
         {   
             location:"View St", 
             data: [
@@ -67,10 +67,11 @@ function reducer(state = initialState, action) {
     switch(action.type) {
         case SHOW_TABLE: {
             
-            if (action.data === null) {
+            if (action.data === null) { // This can be delted for final build 
                 return Object.assign({}, state, {
                     visible: true,
                     location: action.location,
+                    id: action.id,
                     data: initialState.data.filter( data => {
                             return data.location === action.location; 
                     })[0].data // Have to get the 0th element of the returned array for some reason 
@@ -79,7 +80,8 @@ function reducer(state = initialState, action) {
                 return Object.assign({}, state, {
                     visible: true,
                     location: action.location,
-                    data: action.data
+                    data: action.data,
+                    id: action.id
                 })
             }
         }
@@ -95,16 +97,17 @@ function reducer(state = initialState, action) {
     
 }
 
-export function showTable(id, location) {
+export function showTable(id, location) { // Get rid of location for final build
 
     return (dispatch) => {
-        axios.get('/node-sensor-data/' + id)
+        axios.get('/api/node-sensor-data/' + id)
         .then(response => {
 
             dispatch({
                 type: SHOW_TABLE, 
                 location: location, 
-                data: response.data
+                data: response.data,
+                id: id
             });
         })
         .catch(error => {
@@ -112,7 +115,8 @@ export function showTable(id, location) {
             dispatch({
                 type: SHOW_TABLE, 
                 location: location, 
-                data: null
+                data: null,
+                id: id
             });
         });
     }
@@ -120,6 +124,32 @@ export function showTable(id, location) {
 
 export function hideTable() {
     return { type: HIDE_TABLE}
+}
+
+export function filterDate(id, date, location) { //get rid of location for final build
+
+    // Date is formatted to YYYY-mm-dd, this is what the api expects
+    var formattedDate = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate()
+    return (dispatch) => {
+        axios.get('/api/node-sensor-data/' + id + "/" + formattedDate)
+        .then(response => {
+            dispatch({
+                type: SHOW_TABLE,
+                location: location,
+                data: response.data,
+                id: id
+            });
+        })
+        .catch(error => {
+            console.log(error);
+            dispatch({
+                type: SHOW_TABLE, 
+                location: location, 
+                data: null,
+                id: id
+            });
+        })
+    }
 }
 
 export default reducer;

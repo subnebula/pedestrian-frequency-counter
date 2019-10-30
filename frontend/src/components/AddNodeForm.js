@@ -21,10 +21,10 @@ class AddNodeForm extends React.Component {
             <form>
                 <div className='form-group'>
                     <label>Device ID:</label>
-                    <input className='form-control' name='devid' type='text' value={this.props.devid}
+                    <input className='form-control' name='devid' type='text' value={this.props.devid} 
                         onChange={handleInputChange}/>
                     <small id="devid help" className="form-text text-muted">
-                        This is the device ID from the things network
+                        This should be the same device ID listed on The Things Network (Numbers only)
                     </small>
                 </div>
                 <div className='form-group'>

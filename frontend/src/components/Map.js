@@ -2,12 +2,14 @@ import React from "react"
 import mapboxgl from "mapbox-gl"
 import { connect } from "react-redux"
 
-import { showTable } from "../redux/reducers/TableData"
-import { loadMarkers } from "../redux/reducers/markers"
+import { filterDate } from "../redux/reducers/TableData"
+import { loadMarkers, loadMarkersByDate } from "../redux/reducers/markers"
 import { isMobile } from "react-device-detect";
 
 // Public key for mapbox API
 mapboxgl.accessToken = "pk.eyJ1IjoiMTg1MTk5NjEiLCJhIjoiY2p2OWd4bThtMHNwNDN5cDU0OWZ6aTczeiJ9.I0UeX3pGMBHSet68Nx9R4w";
+
+var date = new Date();
 
 // Creates a new popup object
 var popup = new mapboxgl.Popup({
@@ -71,6 +73,8 @@ class Map extends React.Component {
     this.map.addControl(
       new mapboxgl.NavigationControl()
     );
+
+    this.map.on("StyleLoad", this.onStyleLoad);
 
     // Once the map loads
     this.map.on("load", () => {
@@ -146,7 +150,7 @@ class Map extends React.Component {
           "data": {
             "type": "FeatureCollection",
             // The list of sensors is read from the redux store
-            "features":this.props.markers
+            "features": this.props.markers
           }
         },
         "paint": {
@@ -214,8 +218,9 @@ class Map extends React.Component {
 
       this.map.flyTo({center: point.features[0].geometry.coordinates});
       
-      this.props.dispatch(showTable(
+      this.props.dispatch(filterDate(
         point.features[0].properties.id,
+        date,
         point.features[0].properties.description
       ));
       
@@ -226,6 +231,22 @@ class Map extends React.Component {
   // If/when the component unmounts
   componentWillUnmount() {
     this.map.remove();
+  }
+
+  componentWillUpdate(nextProps) {
+    const {markers } = nextProps;
+    if (this.map.isStyleLoaded()) {
+      this.map.getSource('nodes').setData({
+        "type": "FeatureCollection",
+        // The list of sensors is read from the redux store
+        "features": markers
+      });
+      this.map.getSource('heatmap').setData({
+        "type": "FeatureCollection",
+        // The list of sensors is read from the redux store
+        "features": markers
+      });
+    }
   }
 
   render() {
@@ -247,7 +268,7 @@ class Map extends React.Component {
       return (
         <div>
           <div className="absolute top right left bottom mt60" ref={el => this.mapContainer = el}/>
-          <div className="card absolute bottom left shadow z1" style={{backgroundColor: "#585e6e"}}>
+          <div className="card absolute bottom left shadow z1 bg-dark">{/*style={{backgroundColor: "#585e6e"}}>*/}
             <div className="card-body">
               <h2 className="card-text txt-s block text-white">{key.name}</h2>
             
