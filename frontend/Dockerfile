@@ -5,6 +5,5 @@ VOLUME ["/app"]
 WORKDIR /app
 
 RUN npm install -g serve
-RUN npm run build
 
-CMD  serve -s build
+CMD npm install && npm run build && serve -s build
