@@ -1,5 +1,7 @@
 **This is set up to be used with docker. Ensure Docker is installed on your machine before running**
 
+Check out the user manual [here](https://github.com/SubnormalNebula/pedestrian-frequency-counter/blob/master/User_Manual.pdf)
+
 Run the following commands to start:
 ```
 docker-compose build
